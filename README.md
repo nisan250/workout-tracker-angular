@@ -3,17 +3,14 @@
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
 1. This is an app for tracking training activity.
-2. using Angular with ng-bootstrap.
-3. simple CRUD Operations with the HttpClient.
-to run this project:
-1. This is an app for tracking training activity.
-2. using Angular with ng-bootstrap
+2. ng-bootstrap.
+3. CRUD Operations with the HttpClient.
 
 # Run This Project
 to run this project:
-1. you will have to download the data json file in data directory 
-2. run json server on your local machine with the data json file that is in this project
-to run this
+1. download the data/data.json file to your local computer 
+2. run json server on your local machine with the data.json: json-server db.json
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
