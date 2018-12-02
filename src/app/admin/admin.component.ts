@@ -20,7 +20,7 @@ export class AdminComponent implements OnInit {
   }
 
   beforeChange($event) {
-    console.log('before tab change', $event);
+    // console.log('before tab change', $event);
     if ($event.nextId === 'tabImages') {
       // $event.preventDefault();
     }

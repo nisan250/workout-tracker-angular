@@ -18,6 +18,7 @@ export class WorkoutsComponent implements OnInit {
   public totals = {};
   public pageSize = 5;
   public currPage = 1;
+  public errorMessage = '';
 
   constructor(private workoutService: WorkoutsApiService, private modal: NgbModal) { }
 
@@ -33,7 +34,7 @@ export class WorkoutsComponent implements OnInit {
     forkJoin(
       // this.workoutService.getWorkouts(),
       this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize),
-      this.workoutService.getPerfTargets()
+      this.workoutService.getPerfTargets(),
     ).subscribe(([workoutsResult, perfTargetsResult]) => {
         // this.workoutsOrig = workoutsResult;
         this.workouts = workoutsResult;
@@ -41,8 +42,10 @@ export class WorkoutsComponent implements OnInit {
         this.perfTargets = perfTargetsResult;
         this.calculatePerformance();
         this.loading = false;
-        console.log('--workouts', this.workouts, this.perfTargets);
-    });
+        // console.log('--workouts', this.workouts, this.perfTargets);
+    },
+      error => this.errorMessage = <any>error
+    );
   }
 
   refreshGrid() {
@@ -55,14 +58,19 @@ export class WorkoutsComponent implements OnInit {
     this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize).subscribe(data => {
       this.workouts = data;
       this.loading = false;
-    });
+    },
+      error => this.errorMessage = <any>error
+    );
   }
 
 
   deleteWorkout(id, deleteModal) {
     const options: NgbModalOptions =  {size: 'sm'};
     this.modal.open(deleteModal, options).result.then(result => {
-      this.workoutService.deleteWorkout(id).subscribe(data => _.remove(this.workouts, { id: id }));
+      this.workoutService.deleteWorkout(id).subscribe(
+        data => _.remove(this.workouts, { id: id }),
+        error => this.errorMessage = <any>error
+      );
     }, reason => console.log(`Dismissed: ${reason}`));
   }
 
@@ -70,14 +78,16 @@ export class WorkoutsComponent implements OnInit {
     const modalRef = this.modal.open(PerformanceTargetsModalComponent);
     modalRef.componentInstance.perfTargets = this.perfTargets;
     modalRef.result.then(result => {
-      console.log('Modal result', result);
+      // console.log('Modal result', result);
       this.loading = true;
       this.workoutService.savePerfTargets(result).subscribe(data => {
         this.perfTargets = data;
         this.loading = false;
-      });
+      },
+        error => this.errorMessage = <any>error
+      );
     }, reason => {
-      console.log(`Dismissed reason: ${reason}`);
+      // console.log(`Dismissed reason: ${reason}`);
     });
   }
 
@@ -86,7 +96,7 @@ export class WorkoutsComponent implements OnInit {
     const rowTotal = _.chain(this.workouts).filter(x => x.type === 'row').sumBy(x => +x.distance).value();
     const runTotal = _.chain(this.workouts).filter(x => x.type === 'run').sumBy(x => +x.distance).value();
     this.totals = { bike: bikeTotal, row: rowTotal, run: runTotal };
-    console.log('**totals', this.totals);
+    // console.log('**totals', this.totals);
   }
 
   getPBType(total: number, target: number) {

@@ -64,15 +64,6 @@
     },
     {
       "rating": 5,
-      "type": "bike",
-      "date": "2018-11-19",
-      "time": null,
-      "distance": "200",
-      "location": "Shalom Gym",
-      "id": 6
-    },
-    {
-      "rating": 5,
       "date": "2018-11-1",
       "type": "bike",
       "time": {
@@ -83,6 +74,19 @@
       "distance": "200",
       "location": "Outfit Gym",
       "id": 7
+    },
+    {
+      "rating": 4,
+      "distance": "200",
+      "location": "Outfit Gym",
+      "time": {
+        "hour": 3,
+        "minute": 4,
+        "second": 0
+      },
+      "date": "2018-12-1",
+      "type": "row",
+      "id": 8
     }
   ],
   "locations": [

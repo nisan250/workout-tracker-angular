@@ -18,6 +18,7 @@ export class EntryEditorComponent implements OnInit {
   public maxDate: NgbDateStruct;
   // public locations = ['Main gym', 'Home gym', 'neighborhood 1 mile course', 'neighborhood 3 mile course'];
   public locations = [];
+  public errorMessage = '';
 
   constructor(
     private router: ActivatedRoute,
@@ -25,10 +26,10 @@ export class EntryEditorComponent implements OnInit {
     private workoutService: WorkoutsApiService) {
       const today = new Date();
       this.maxDate = NgbDate.from({ year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate()});
-      console.log(this.maxDate, 'this.maxDate');
+      // console.log(this.maxDate, 'this.maxDate');
     }
 
-  ngOnInit() {
+  ngOnInit(): void {
     // this.workoutService.getLocations().subscribe(data => this.locations = data);
 
     this.router.params.subscribe(params => {
@@ -39,7 +40,9 @@ export class EntryEditorComponent implements OnInit {
           const d = new Date(this.workout.date);
           this.startDate = {year: d.getFullYear(), month: d.getMonth() + 1};
           this.loading = false;
-        });
+        },
+          error => this.errorMessage = <any>error
+        );
       }
     });
   }
@@ -73,10 +76,12 @@ export class EntryEditorComponent implements OnInit {
       // this.workout = data;
       this.loading = false;
       this.nav.navigate(['/workouts']);
-    });
+    },
+      error => this.errorMessage = <any>error
+    );
   }
 
   popVisibilityChanged(pop) {
-    console.log(`Popover open state: ${ pop.isOpen() }`);
+    // console.log(`Popover open state: ${ pop.isOpen() }`);
   }
 }

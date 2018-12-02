@@ -77,7 +77,7 @@ var AdminComponent = /** @class */ (function () {
     AdminComponent.prototype.ngOnInit = function () {
     };
     AdminComponent.prototype.beforeChange = function ($event) {
-        console.log('before tab change', $event);
+        // console.log('before tab change', $event);
         if ($event.nextId === 'tabImages') {
             // $event.preventDefault();
         }
@@ -367,6 +367,7 @@ var EntryEditorComponent = /** @class */ (function () {
         this.loading = false;
         // public locations = ['Main gym', 'Home gym', 'neighborhood 1 mile course', 'neighborhood 3 mile course'];
         this.locations = [];
+        this.errorMessage = '';
         // client side filtering
         // locationsSearch = (text$: Observable<string>) =>
         //   text$.pipe(
@@ -383,7 +384,7 @@ var EntryEditorComponent = /** @class */ (function () {
         this.locationsFormatter = function (result) { return result; };
         var today = new Date();
         this.maxDate = _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbDate"].from({ year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() });
-        console.log(this.maxDate, 'this.maxDate');
+        // console.log(this.maxDate, 'this.maxDate');
     }
     EntryEditorComponent.prototype.ngOnInit = function () {
         // this.workoutService.getLocations().subscribe(data => this.locations = data);
@@ -396,7 +397,7 @@ var EntryEditorComponent = /** @class */ (function () {
                     var d = new Date(_this.workout.date);
                     _this.startDate = { year: d.getFullYear(), month: d.getMonth() + 1 };
                     _this.loading = false;
-                });
+                }, function (error) { return _this.errorMessage = error; });
             }
         });
     };
@@ -407,10 +408,10 @@ var EntryEditorComponent = /** @class */ (function () {
             // this.workout = data;
             _this.loading = false;
             _this.nav.navigate(['/workouts']);
-        });
+        }, function (error) { return _this.errorMessage = error; });
     };
     EntryEditorComponent.prototype.popVisibilityChanged = function (pop) {
-        console.log("Popover open state: " + pop.isOpen());
+        // console.log(`Popover open state: ${ pop.isOpen() }`);
     };
     EntryEditorComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
@@ -704,6 +705,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkoutsApiService", function() { return WorkoutsApiService; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -715,22 +718,24 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 };
 
 
+
+
 var WorkoutsApiService = /** @class */ (function () {
     function WorkoutsApiService(http) {
         this.http = http;
         this.baseUrl = 'http://localhost:3000';
     }
     WorkoutsApiService.prototype.getWorkouts = function () {
-        return this.http.get(this.baseUrl + "/workouts");
+        return this.http.get(this.baseUrl + "/workouts").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getWorkout = function (id) {
-        return this.http.get(this.baseUrl + "/workouts/" + id);
+        return this.http.get(this.baseUrl + "/workouts/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.addWorkout = function (workout) {
-        return this.http.post(this.baseUrl + "/workouts", workout);
+        return this.http.post(this.baseUrl + "/workouts", workout).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.updateWorkout = function (workout) {
-        return this.http.put(this.baseUrl + "/workouts/" + workout.id, workout);
+        return this.http.put(this.baseUrl + "/workouts/" + workout.id, workout).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.saveWorkout = function (workout) {
         if (workout.id) {
@@ -744,19 +749,33 @@ var WorkoutsApiService = /** @class */ (function () {
         return this.http.delete(this.baseUrl + "/workouts/" + id);
     };
     WorkoutsApiService.prototype.getLocations = function () {
-        return this.http.get(this.baseUrl + "/locations");
+        return this.http.get(this.baseUrl + "/locations").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.searchLocations = function (searchTerm) {
-        return this.http.get(this.baseUrl + "/locations?q=" + searchTerm);
+        return this.http.get(this.baseUrl + "/locations?q=" + searchTerm).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getPerfTargets = function () {
-        return this.http.get(this.baseUrl + "/performanceTargets");
+        return this.http.get(this.baseUrl + "/performanceTargets").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.savePerfTargets = function (perfTargets) {
-        return this.http.put(this.baseUrl + "/performanceTargets", perfTargets);
+        return this.http.put(this.baseUrl + "/performanceTargets", perfTargets).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getWorkoutsPaged = function (currPage, pageSize) {
-        return this.http.get(this.baseUrl + "/workouts?_page=" + currPage + "&_limit=" + pageSize);
+        return this.http.get(this.baseUrl + "/workouts?_page=" + currPage + "&_limit=" + pageSize).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    WorkoutsApiService.prototype.handleError = function (err) {
+        var errorMessage = '';
+        if (err.error instanceof ErrorEvent) {
+            // client-side or network error
+            errorMessage = "client-side or network error ---> error  " + err.message;
+        }
+        else {
+            // backend error with response code
+            errorMessage = "backend error with response code or network error ---> error " + err.message;
+            alert("To use this app in action you have to downlowd the data/db.json file\n              from the github repository to your local machine and run json-server(localhost:3000)");
+        }
+        console.log(errorMessage);
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMessage);
     };
     WorkoutsApiService = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
@@ -836,6 +855,7 @@ var WorkoutsComponent = /** @class */ (function () {
         this.totals = {};
         this.pageSize = 5;
         this.currPage = 1;
+        this.errorMessage = '';
     }
     WorkoutsComponent.prototype.ngOnInit = function () {
         // this.loading = true;
@@ -856,8 +876,8 @@ var WorkoutsComponent = /** @class */ (function () {
             _this.perfTargets = perfTargetsResult;
             _this.calculatePerformance();
             _this.loading = false;
-            console.log('--workouts', _this.workouts, _this.perfTargets);
-        });
+            // console.log('--workouts', this.workouts, this.perfTargets);
+        }, function (error) { return _this.errorMessage = error; });
     };
     WorkoutsComponent.prototype.refreshGrid = function () {
         // client side filtering (pagination)
@@ -869,13 +889,13 @@ var WorkoutsComponent = /** @class */ (function () {
         this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize).subscribe(function (data) {
             _this.workouts = data;
             _this.loading = false;
-        });
+        }, function (error) { return _this.errorMessage = error; });
     };
     WorkoutsComponent.prototype.deleteWorkout = function (id, deleteModal) {
         var _this = this;
         var options = { size: 'sm' };
         this.modal.open(deleteModal, options).result.then(function (result) {
-            _this.workoutService.deleteWorkout(id).subscribe(function (data) { return lodash__WEBPACK_IMPORTED_MODULE_2__["remove"](_this.workouts, { id: id }); });
+            _this.workoutService.deleteWorkout(id).subscribe(function (data) { return lodash__WEBPACK_IMPORTED_MODULE_2__["remove"](_this.workouts, { id: id }); }, function (error) { return _this.errorMessage = error; });
         }, function (reason) { return console.log("Dismissed: " + reason); });
     };
     WorkoutsComponent.prototype.showPerfTargets = function () {
@@ -883,14 +903,14 @@ var WorkoutsComponent = /** @class */ (function () {
         var modalRef = this.modal.open(_performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_5__["PerformanceTargetsModalComponent"]);
         modalRef.componentInstance.perfTargets = this.perfTargets;
         modalRef.result.then(function (result) {
-            console.log('Modal result', result);
+            // console.log('Modal result', result);
             _this.loading = true;
             _this.workoutService.savePerfTargets(result).subscribe(function (data) {
                 _this.perfTargets = data;
                 _this.loading = false;
-            });
+            }, function (error) { return _this.errorMessage = error; });
         }, function (reason) {
-            console.log("Dismissed reason: " + reason);
+            // console.log(`Dismissed reason: ${reason}`);
         });
     };
     WorkoutsComponent.prototype.calculatePerformance = function () {
@@ -898,7 +918,7 @@ var WorkoutsComponent = /** @class */ (function () {
         var rowTotal = lodash__WEBPACK_IMPORTED_MODULE_2__["chain"](this.workouts).filter(function (x) { return x.type === 'row'; }).sumBy(function (x) { return +x.distance; }).value();
         var runTotal = lodash__WEBPACK_IMPORTED_MODULE_2__["chain"](this.workouts).filter(function (x) { return x.type === 'run'; }).sumBy(function (x) { return +x.distance; }).value();
         this.totals = { bike: bikeTotal, row: rowTotal, run: runTotal };
-        console.log('**totals', this.totals);
+        // console.log('**totals', this.totals);
     };
     WorkoutsComponent.prototype.getPBType = function (total, target) {
         var pct = (total / target) * 100;
