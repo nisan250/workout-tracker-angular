@@ -517,7 +517,7 @@ var HomeComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"navbar navbar-expand-lg fixed-top navbar-dark bg-primary\">\n  <a class=\"navbar-brand\"  [routerLink]=\"['/']\" [routerLinkActive]=\"['link-active']\">Workout Tracker</a>\n\n  <div class=\"collapse navbar-collapse xnavbar-nav xnav\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-item nav-link\"  [routerLink]=\"['/']\" [routerLinkActive]=\"['link-active']\">Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-item nav-link\" [routerLink]=\"['/workouts']\" [routerLinkActive]=\"['link-active']\">workouts</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-item nav-link\" [routerLink]=\"['/admin']\" [routerLinkActive]=\"['link-active']\">admin</a>\n        </li>\n    </ul>\n  </div>\n</div>\n"
+module.exports = "<div class=\"navbar navbar-expand-lg fixed-top navbar-dark bg-primary\">\n  <a class=\"navbar-brand\"  [routerLink]=\"['/']\" [routerLinkActive]=\"['link-active']\">Workout Tracker</a>\n\n\n\n  <button class=\"navbar-toggler\" type=\"button\" (click)=\"toggleNavbar()\">\n    <span class=\"navbar-toggler-icon\"></span>\n  </button>\n\n  <div class=\"collapse navbar-collapse xnavbar-nav xnav\" [ngClass]=\"{ 'show': navbarOpen }\">\n    <ul class=\"navbar-nav mr-auto\">\n      <li class=\"nav-item\">\n        <a class=\"nav-item nav-link\"  [routerLink]=\"['/']\" [routerLinkActive]=\"['link-active']\">Home</a>\n      </li>\n      <li class=\"nav-item\">\n        <a class=\"nav-item nav-link\" [routerLink]=\"['/workouts']\" [routerLinkActive]=\"['link-active']\">workouts</a>\n      </li>\n      <li class=\"nav-item\">\n          <a class=\"nav-item nav-link\" [routerLink]=\"['/admin']\" [routerLinkActive]=\"['link-active']\">admin</a>\n        </li>\n    </ul>\n  </div>\n</div>\n"
 
 /***/ }),
 
@@ -555,8 +555,12 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 var NavMenuComponent = /** @class */ (function () {
     function NavMenuComponent() {
+        this.navbarOpen = false;
     }
     NavMenuComponent.prototype.ngOnInit = function () {
+    };
+    NavMenuComponent.prototype.toggleNavbar = function () {
+        this.navbarOpen = !this.navbarOpen;
     };
     NavMenuComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({

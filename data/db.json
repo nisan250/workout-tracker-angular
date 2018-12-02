@@ -1,32 +1,10 @@
 {
   "performanceTargets": {
-    "bike": "1000",
-    "run": "2200",
-    "row": "1500"
+    "bike": "3000",
+    "run": "2000",
+    "row": "1000"
   },
   "workouts": [
-    {
-      "rating": null,
-      "type": "bike",
-      "date": "2018-11-1",
-      "time": {
-        "hour": 18,
-        "minute": 1,
-        "second": 0
-      },
-      "distance": "20",
-      "location": "Big Park",
-      "id": 1
-    },
-    {
-      "rating": 3,
-      "type": "run",
-      "date": "2018-11-1",
-      "time": null,
-      "distance": "25",
-      "location": "Caesar Gym",
-      "id": 2
-    },
     {
       "rating": 4,
       "date": "2018-11-7",
@@ -87,6 +65,19 @@
       "date": "2018-12-1",
       "type": "row",
       "id": 8
+    },
+    {
+      "rating": 4,
+      "type": "bike",
+      "date": "2018-11-16",
+      "time": {
+        "hour": 16,
+        "minute": 3,
+        "second": 0
+      },
+      "distance": "200",
+      "location": "Caesar Gym",
+      "id": 9
     }
   ],
   "locations": [
