@@ -1,0 +1,107 @@
+<div>
+  <div class="jumbotron">
+    <h1 class="display-3">Workout Tracker</h1>
+    <hr class="my-4">
+    <p>
+      Welcome to Workout Tracker
+    </p>
+  </div>
+
+
+  <ngb-accordion closeOthers="success" activeIds="panel1"
+        #acc="ngbAccordion" (panelChange)="beforeChange($event)"><!--activeIds="panel1, panel2"-->
+    <ngb-panel id="panel1">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">Welcome</span>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <p>Welcome to Workout Tracker</p>
+        <p class="float-right"> <!--(click)="acc.toggle('panel2')-->
+          <button class="btn btn-info" (click)="nextButton(1)">Next</button>
+        </p>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="panel2">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">How To</span>
+      </ng-template>
+      <ng-template ngbPanelContent>
+          <p>Click Workouts in the menu to start tracking your progress.</p>
+          <p class="float-right">
+            <button class="btn btn-info" (click)="nextButton(2)">Next</button>
+          </p>
+      </ng-template>
+    </ngb-panel>
+    <ngb-panel id="panel3">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">Enjoy</span>
+      </ng-template>
+      <ng-template ngbPanelContent>
+        <p>We hope you enjoy Workout Tracker!</p>
+      </ng-template>
+    </ngb-panel>
+  </ngb-accordion>
+
+
+
+
+
+  <!-- <ngb-accordion>
+      <ngb-panel title="First">
+        <ng-template ngbPanelContent="">First Panel</ng-template>
+      </ngb-panel>
+      <ngb-panel title="second">
+          <ng-template ngbPanelContent="">Second Panel</ng-template>
+      </ngb-panel>
+      <ngb-panel title="third">
+          <ng-template ngbPanelContent="">Third Panel</ng-template>
+      </ngb-panel>
+  </ngb-accordion> -->
+
+<!--for stying:-->
+  <!-- <ngb-accordion closeOthers="true">
+    <ngb-panel >
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">First</span>
+      </ng-template>
+      <ng-template ngbPanelContent>First Panel</ng-template>
+    </ngb-panel>
+    <ngb-panel >
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">Second</span>
+      </ng-template>
+      <ng-template ngbPanelContent>Second Panel</ng-template>
+    </ngb-panel>
+    <ngb-panel title="third">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">Third</span>
+      </ng-template>
+      <ng-template ngbPanelContent>Third Panel</ng-template>
+    </ngb-panel>
+  </ngb-accordion> -->
+
+  <!-- activeIds="panel1, panel2"
+  <ngb-accordion activeIds="panel1">
+    <ngb-panel id="panel1">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">First</span>
+      </ng-template>
+      <ng-template ngbPanelContent>First Panel</ng-template>
+    </ngb-panel>
+    <ngb-panel id="panel2">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">Second</span>
+      </ng-template>
+      <ng-template ngbPanelContent>Second Panel</ng-template>
+    </ngb-panel>
+    <ngb-panel id="panel3">
+      <ng-template ngbPanelTitle>
+        <span class="font-weight-bold">Third</span>
+      </ng-template>
+      <ng-template ngbPanelContent>Third Panel</ng-template>
+    </ngb-panel>
+  </ngb-accordion> -->
+</div>
+
+
+

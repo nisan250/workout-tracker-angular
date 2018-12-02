@@ -1,18 +1,48 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
+
+// Third party imports
+import { NgxLoadingModule } from 'ngx-loading';
+import { NgbModule, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { HomeComponent } from './home/home.component';
+import { WorkoutsComponent } from './workouts/workouts.component';
+import { EntryEditorComponent } from './entry-editor/entry-editor.component';
+import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { WorkoutsApiService } from './services/workouts-api.service';
+import { DateStringAdapterService } from './services/date-string-adapter.service';
+import { PerformanceTargetsModalComponent } from './performance-targets-modal/performance-targets-modal.component';
+import { AdminComponent } from './admin/admin.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomeComponent,
+    WorkoutsComponent,
+    EntryEditorComponent,
+    NavMenuComponent,
+    PerformanceTargetsModalComponent,
+    AdminComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
+    NgxLoadingModule.forRoot({}),
+    FormsModule,
+    NgbModule.forRoot()
   ],
-  providers: [],
-  bootstrap: [AppComponent]
+  providers: [
+    WorkoutsApiService,
+    { provide: NgbDateAdapter, useClass: DateStringAdapterService }
+  ],
+  entryComponents: [
+  PerformanceTargetsModalComponent,
+  ],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

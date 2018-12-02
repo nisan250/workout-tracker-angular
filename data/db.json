@@ -1,0 +1,122 @@
+{
+  "performanceTargets": {
+    "bike": "1000",
+    "run": "2200",
+    "row": "1500"
+  },
+  "workouts": [
+    {
+      "rating": null,
+      "type": "bike",
+      "date": "2018-11-1",
+      "time": {
+        "hour": 18,
+        "minute": 1,
+        "second": 0
+      },
+      "distance": "20",
+      "location": "Big Park",
+      "id": 1
+    },
+    {
+      "rating": 3,
+      "type": "run",
+      "date": "2018-11-1",
+      "time": null,
+      "distance": "25",
+      "location": "Caesar Gym",
+      "id": 2
+    },
+    {
+      "rating": 4,
+      "date": "2018-11-7",
+      "time": {
+        "hour": 13,
+        "minute": 7,
+        "second": 0
+      },
+      "distance": "100",
+      "type": "row",
+      "location": "Yarkon Park",
+      "id": 3
+    },
+    {
+      "rating": 5,
+      "type": "run",
+      "date": "2018-11-14",
+      "time": null,
+      "distance": "50",
+      "location": "best Gym",
+      "id": 4
+    },
+    {
+      "rating": 4,
+      "type": "bike",
+      "date": "2018-11-23",
+      "time": {
+        "hour": 14,
+        "minute": 1,
+        "second": 0
+      },
+      "distance": "100",
+      "location": "Work Gym",
+      "id": 5
+    },
+    {
+      "rating": 5,
+      "type": "bike",
+      "date": "2018-11-19",
+      "time": null,
+      "distance": "200",
+      "location": "Shalom Gym",
+      "id": 6
+    },
+    {
+      "rating": 5,
+      "date": "2018-11-1",
+      "type": "bike",
+      "time": {
+        "hour": 13,
+        "minute": 3,
+        "second": 0
+      },
+      "distance": "200",
+      "location": "Outfit Gym",
+      "id": 7
+    }
+  ],
+  "locations": [
+    {
+      "id": 1,
+      "name": "Outfit Gym"
+    },
+    {
+      "id": 2,
+      "name": "Shalom Gym"
+    },
+    {
+      "id": 3,
+      "name": "Work Gym"
+    },
+    {
+      "id": 4,
+      "name": "best Gym"
+    },
+    {
+      "id": 5,
+      "name": "Caesar Gym"
+    },
+    {
+      "id": 6,
+      "name": "Yarkon Park"
+    },
+    {
+      "id": 7,
+      "name": "Big Park"
+    },
+    {
+      "id": 8,
+      "name": "Hrtzl Park"
+    }
+  ]
+}

@@ -1,0 +1,109 @@
+<div>
+  <ngx-loading [show]="loading" ></ngx-loading>
+
+  <div class="card">
+    <div class="card-header">
+      <h4 class="card-title">Workouts</h4>
+    </div>
+    <div class="card-body">
+      <button class="btn btn-sm btn-primary" (click)="showPerfTargets()">Set Performance Targets</button>
+      <button class="btn btn-sm" [ngClass]="isCollapsed ? 'btn-info' : 'btn-outline-info'" (click)="isCollapsed = !isCollapsed">?</button>
+      <div class="mt-sm-2" [ngbCollapse]="!isCollapsed">
+          <div class="card">
+            <div class="card-body">
+              This will enable you to set performance targets for each activity and enable you to track progress
+            </div>
+          </div>
+      </div>
+
+      <hr />
+      <p><!--showValue="true"-->
+        <ngb-progressbar [value]="totals.bike" [max]="perfTargets.bike"  height="20px"
+            [type]="getPBType(totals.bike, perfTargets.bike)">
+          (Bike) {{totals.bike}} of {{perfTargets.bike}}
+        </ngb-progressbar>
+      </p>
+      <p>
+        <ngb-progressbar [value]="totals.row" [max]="perfTargets.row" height="20px"
+            [type]="getPBType(totals.row, perfTargets.row)">
+          (Row) {{totals.row}} of {{perfTargets.row}}
+        </ngb-progressbar>
+      </p>
+      <p>
+        <ngb-progressbar [value]="totals.run" [max]="perfTargets.run" height="20px"
+            [type]="getPBType(totals.run, perfTargets.run)">
+          (Run) {{totals.run}} of {{perfTargets.run}}
+        </ngb-progressbar>
+      </p>
+    </div>
+  </div>
+
+
+
+  <div class="card">
+      <h3 class="card-header">
+        Workout Entries
+        <a [routerLink]="['/workouts', 'new']" class="btn btn-sm btn-primary float-right"
+           [ngbTooltip]="ttContent" placement="left" tooltipClass="custom-tooltip">Add New Entry</a>
+        <!--[ngbTooltip]="ttContent"  -->
+        <ng-template #ttContent>
+          Log a new <strong class="text-primary text-uppercase">workout</strong> into your list
+        </ng-template>
+
+        <!-- triggers="click:blur" is build in-->
+        <!-- <button class="btn btn-success" ngbTooltip="This is just a test" triggers="manual"
+            #t="ngbTooltip" (click)="t.open()" [autoClose]="'inside'">
+          Tooltip Test
+        </button> -->
+      </h3>
+      <div class="card-body">
+
+        <div class="row">
+          <div class="col">
+            <ngb-pagination [collectionSize]="50" boundaryLinks="true"
+                [pageSize]="pageSize" maxSize="5" rotate="true" [(page)]="currPage"
+                (pageChange)="refreshGrid()"></ngb-pagination>
+          </div>
+        </div>
+
+        <table class="table table-striped">
+          <thead>
+            <th>Date</th>
+            <th>Type</th>
+            <th>Distance</th>
+            <th></th>
+          </thead>
+          <tbody>
+            <tr *ngFor="let entry of workouts">
+              <td>{{entry.date}}</td>
+              <td>{{entry.type}}</td>
+              <td>{{entry.distance}}</td>
+              <td>
+                <a [routerLink]="['/workouts', entry.id]" class="btn btn-info btn-sm mr-2">Edit</a>
+                <button class="btn btn-danger btn-sm" (click)="deleteWorkout(entry.id, deleteModal)">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <!--TODO: PRogress Bar here-->
+
+      </div>
+  </div>
+
+
+
+  <ng-template #deleteModal let-modal>
+      <div class="modal-header">
+        <h4 class="modal-title">Delete?</h4>
+      </div>
+      <div class="modal-body">
+        <p>Are you sure you want to delete?</p>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-success" (click)="modal.close()">Yes (Delete)</button>
+        <button class="btn btn-danger" (click)="modal.dismiss()">No</button>
+      </div>
+    </ng-template>
+
+</div>

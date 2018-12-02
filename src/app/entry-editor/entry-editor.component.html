@@ -1,0 +1,127 @@
+<div class="">
+    <ngx-loading [show]="loading" ></ngx-loading>
+
+    <div class="card">
+        <h3 class="card-header">Entry</h3>
+        <div class="card-body">
+          <form>
+            <div class="form-group row">
+              <label class="col-form-label col-sm-2">Type:</label>
+              <div class="col-sm-6">
+                <!-- <select class="form-control" name="wtype" [(ngModel)]="workout.type">
+                  <option value="">(Select)</option>
+                  <option value="bike">Bike</option>
+                  <option value="run">Run</option>
+                  <option value="row">Row</option>
+                </select> -->
+                <div class="btn-group btn-group-toggle" ngbRadioGroup name="wtype" [(ngModel)]="workout.type">
+                  <!-- (label.btn-primary>input[type=radio] [value=""])*3 -->
+                  <label ngbButtonLabel class="btn-primary"><input ngbButton type="radio" value="bike" />Bike</label>
+                  <label ngbButtonLabel class="btn-primary"><input ngbButton type="radio" value="run" />Run</label>
+                  <label ngbButtonLabel class="btn-primary"><input ngbButton type="radio" value="row" />Row</label>
+                </div>
+
+
+                <button class="btn btn-outline-info btn-sm ml-sm-2" [popoverTitle]="popTitle"
+                [ngbPopover]="popContent" placement="right" popoverClass="custom-popover"
+                triggers="mouseenter:mouseleave" #pop="ngbPopover"
+                (shown)="popVisibilityChanged(pop)" (hidden)="popVisibilityChanged(pop)">?</button>
+                <ng-template #popTitle>
+                  <h4>Activity Type</h4>
+                </ng-template>
+                <ng-template #popContent>
+                    These buttons specify the type of <strong class="text-primary text-uppercase">activity</strong>
+                </ng-template>
+
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-sm-2">Date:</label>
+              <div class="col-sm-6">
+                <!-- <input type="text" class="form-control" name="wdate" [(ngModel)]="workout.date" /> -->
+                <!-- <ngb-datepicker #d name="wdate" [(ngModel)]="workout.date" [startDate]="startDate" [maxDate]="maxDate"></ngb-datepicker> -->
+
+                <div class="input-group">
+                          <input class="form-control" placeholder="yyyy-mm-dd" name="wdate" [(ngModel)]="workout.date" [maxDate]="maxDate"
+                          ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-info calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                </div>
+                <!-- <div class="input-group">
+                    <input class="form-control" placeholder="yyyy-mm-dd" name="wdate" [(ngModel)]="workout.date" [maxDate]="maxDate"
+                      ngbDatepicker #d="ngbDatepicker">
+                    <div class="input-group-append">
+                      <button class="btn btn-info calendar" (click)="d.toggle()" type="button"></button>
+                    </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-sm-2">Time:</label>
+              <div class="col-sm-6"><!--[minuteStep]="15"-->
+                <ngb-timepicker name="tp" [(ngModel)]="workout.time" [meridian]="true" ></ngb-timepicker>
+              </div>
+            </div>
+
+            <div class="form-group row">
+              <label class="col-form-label col-sm-2">Quality:</label>
+              <div class="col-sm-3 mt-sm-2">
+                <ngb-rating [(rate)]="workout.rating" [readonly]="false" max="5">
+                  <ng-template let-fill="fill" let-index="index">
+                    <span class="star" [class.filled]="fill === 100" [class.bad]="index < 2">&#9733;</span>
+                  </ng-template>
+                </ngb-rating>
+              </div>
+            </div>
+
+
+            <div class="form-group row">
+              <label class="col-form-label col-sm-2">Distance:</label>
+              <div class="col-sm-6">
+                <input type="text" class="form-control" name="wdistance" [(ngModel)]="workout.distance"
+                        required pattern="\d+" #wdistance="ngModel" />
+              </div>
+            </div>
+
+            <div *ngIf="wdistance.invalid && (wdistance.dirty || wdistance.touched)">
+              <!-- <ngb-alert type="custom" [dismissible]="true" *ngIf="!isDismissible" (close)="isDismissible = !isDismissible">
+                Dismissible Alert
+              </ngb-alert> -->
+              <ngb-alert type="danger" [dismissible]="true" *ngIf="wdistance.errors.required && !isDismissibleD" (close)="isDismissibleD = !isDismissibleD" >
+                <strong>Distance</strong> is required.
+              </ngb-alert>
+              <ngb-alert type="warning" [dismissible]="true" *ngIf="wdistance.errors.pattern  && !isDismissible" (close)="isDismissible = !isDismissible">
+                Distance must be a valid number.
+              </ngb-alert>
+            </div>
+
+
+            <div class="form-group row">
+                <label class="col-form-label col-sm-2">Location:</label>
+                <div class="col-sm-6">
+                  <input type="text" class="form-control" name="wlocation" [(ngModel)]="workout.location"
+                      [ngbTypeahead]="locationsSearch" />
+                      <!-- [resultFormatter]="locationsFormatter" [inputFormatter]="locationsFormatter" -->
+                  <div>
+                    * type "gym" to see results
+                  </div>
+                </div>
+              </div>
+
+            <div class="form-group row">
+              <div class="col-sm-6 mt-sm-3">
+                <button class="btn btn-primary mr-sm-2" (click)="save()">Save</button>
+                <a class="btn btn-secondary" [routerLink]="'/workouts'">Cancel</a>
+              </div>
+            </div>
+
+          </form>
+        </div>
+      </div>
+</div>
+
+
+

@@ -1,0 +1,18 @@
+.custom-tooltip .tooltip-inner {
+    background-color: #2b2727 !important;
+}
+// .custom-tooltip .arrow::before {
+//   	border-color: #2b2727 !important;
+// }
+.bs-tooltip-right .arrow::before {
+  border-right-color: #2b2727 !important;
+}
+.bs-tooltip-left .arrow::before {
+  border-left-color: #2b2727 !important;
+}
+.bs-tooltip-top .arrow::before {
+  border-top-color: #2b2727 !important;
+}
+.bs-tooltip-bottom .arrow::before {
+  border-bottom-color: #2b2727 !important;
+}
