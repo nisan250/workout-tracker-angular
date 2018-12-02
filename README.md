@@ -9,7 +9,3 @@ with ng-bootstrap.<br> and CRUD Operations with the HttpClient.<br>
 to run this project:
 1. download the data/data.json file to your local computer 
 2. run json server on your local machine with the data.json: json-server db.json
-
-## Development server
-
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
