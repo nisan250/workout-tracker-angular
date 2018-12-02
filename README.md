@@ -2,9 +2,9 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
-This is an app for tracking training activity.
-ng-bootstrap.
-CRUD Operations with the HttpClient.
+This is an app for tracking training activity.<br>
+ng-bootstrap.<br>
+CRUD Operations with the HttpClient.<br>
 
 # Run This Project
 to run this project:
