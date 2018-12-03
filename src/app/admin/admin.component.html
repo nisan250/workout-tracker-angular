@@ -14,7 +14,7 @@
             <ngb-carousel [interval]="0" [pauseOnHover]="true" [showNavigationIndicators]="true"
                 [showNavigationArrows]="true" #imgCarousel>
               <ng-template ngbSlide *ngFor="let img of images">
-                <img [src]="img.src">
+                <img class="img-fluid" [src]="img.src">
                 <div class="carousel-caption">
                   <h3>{{img.title}}</h3>
                   <p>cool sub-title</p>
@@ -24,7 +24,7 @@
           </div>
         </div>
 
-        <div class="row">
+        <div class="row justify-content-center">
           <button class="btn btn-primary mt-sm-2 mr-sm-2" (click)="prev()">Previous</button>
           <button class="btn btn-primary mt-sm-2" (click)="next()">Next</button>
         </div>
