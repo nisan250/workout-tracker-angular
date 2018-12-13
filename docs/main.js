@@ -229,24 +229,28 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm5/http.js");
 /* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm5/forms.js");
-/* harmony import */ var ngx_loading__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ngx-loading */ "./node_modules/ngx-loading/fesm5/ngx-loading.js");
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
-/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
-/* harmony import */ var _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./workouts/workouts.component */ "./src/app/workouts/workouts.component.ts");
-/* harmony import */ var _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./entry-editor/entry-editor.component */ "./src/app/entry-editor/entry-editor.component.ts");
-/* harmony import */ var _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./nav-menu/nav-menu.component */ "./src/app/nav-menu/nav-menu.component.ts");
-/* harmony import */ var _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./services/workouts-api.service */ "./src/app/services/workouts-api.service.ts");
-/* harmony import */ var _services_date_string_adapter_service__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./services/date-string-adapter.service */ "./src/app/services/date-string-adapter.service.ts");
-/* harmony import */ var _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./performance-targets-modal/performance-targets-modal.component */ "./src/app/performance-targets-modal/performance-targets-modal.component.ts");
-/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var angular_in_memory_web_api__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! angular-in-memory-web-api */ "./node_modules/angular-in-memory-web-api/index.js");
+/* harmony import */ var _services_workouts_data__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./services/workouts-data */ "./src/app/services/workouts-data.ts");
+/* harmony import */ var ngx_loading__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ngx-loading */ "./node_modules/ngx-loading/fesm5/ngx-loading.js");
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
+/* harmony import */ var _app_routing_module__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./app-routing.module */ "./src/app/app-routing.module.ts");
+/* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
+/* harmony import */ var _home_home_component__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./home/home.component */ "./src/app/home/home.component.ts");
+/* harmony import */ var _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./workouts/workouts.component */ "./src/app/workouts/workouts.component.ts");
+/* harmony import */ var _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./entry-editor/entry-editor.component */ "./src/app/entry-editor/entry-editor.component.ts");
+/* harmony import */ var _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ./nav-menu/nav-menu.component */ "./src/app/nav-menu/nav-menu.component.ts");
+/* harmony import */ var _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ./services/workouts-api.service */ "./src/app/services/workouts-api.service.ts");
+/* harmony import */ var _services_date_string_adapter_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/date-string-adapter.service */ "./src/app/services/date-string-adapter.service.ts");
+/* harmony import */ var _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./performance-targets-modal/performance-targets-modal.component */ "./src/app/performance-targets-modal/performance-targets-modal.component.ts");
+/* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+
+
 
 
 
@@ -270,30 +274,31 @@ var AppModule = /** @class */ (function () {
     AppModule = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
-                _app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"],
-                _home_home_component__WEBPACK_IMPORTED_MODULE_8__["HomeComponent"],
-                _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_9__["WorkoutsComponent"],
-                _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_10__["EntryEditorComponent"],
-                _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_11__["NavMenuComponent"],
-                _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_14__["PerformanceTargetsModalComponent"],
-                _admin_admin_component__WEBPACK_IMPORTED_MODULE_15__["AdminComponent"]
+                _app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"],
+                _home_home_component__WEBPACK_IMPORTED_MODULE_10__["HomeComponent"],
+                _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_11__["WorkoutsComponent"],
+                _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_12__["EntryEditorComponent"],
+                _nav_menu_nav_menu_component__WEBPACK_IMPORTED_MODULE_13__["NavMenuComponent"],
+                _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_16__["PerformanceTargetsModalComponent"],
+                _admin_admin_component__WEBPACK_IMPORTED_MODULE_17__["AdminComponent"]
             ],
             imports: [
                 _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__["BrowserModule"],
-                _app_routing_module__WEBPACK_IMPORTED_MODULE_6__["AppRoutingModule"],
+                _app_routing_module__WEBPACK_IMPORTED_MODULE_8__["AppRoutingModule"],
                 _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClientModule"],
-                ngx_loading__WEBPACK_IMPORTED_MODULE_4__["NgxLoadingModule"].forRoot({}),
+                ngx_loading__WEBPACK_IMPORTED_MODULE_6__["NgxLoadingModule"].forRoot({}),
                 _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
-                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbModule"].forRoot()
+                _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbModule"].forRoot(),
+                angular_in_memory_web_api__WEBPACK_IMPORTED_MODULE_4__["InMemoryWebApiModule"].forRoot(_services_workouts_data__WEBPACK_IMPORTED_MODULE_5__["WorkoutsData"])
             ],
             providers: [
-                _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_12__["WorkoutsApiService"],
-                { provide: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_5__["NgbDateAdapter"], useClass: _services_date_string_adapter_service__WEBPACK_IMPORTED_MODULE_13__["DateStringAdapterService"] }
+                _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_14__["WorkoutsApiService"],
+                { provide: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbDateAdapter"], useClass: _services_date_string_adapter_service__WEBPACK_IMPORTED_MODULE_15__["DateStringAdapterService"] }
             ],
             entryComponents: [
-                _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_14__["PerformanceTargetsModalComponent"],
+                _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_16__["PerformanceTargetsModalComponent"],
             ],
-            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_7__["AppComponent"]],
+            bootstrap: [_app_component__WEBPACK_IMPORTED_MODULE_9__["AppComponent"]],
         })
     ], AppModule);
     return AppModule;
@@ -310,7 +315,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"\">\n    <ngx-loading [show]=\"loading\" ></ngx-loading>\n\n    <div class=\"card\">\n        <h3 class=\"card-header\">Entry</h3>\n        <div class=\"card-body\">\n          <form>\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Type:</label>\n              <div class=\"col-sm-6\">\n                <!-- <select class=\"form-control\" name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <option value=\"\">(Select)</option>\n                  <option value=\"bike\">Bike</option>\n                  <option value=\"run\">Run</option>\n                  <option value=\"row\">Row</option>\n                </select> -->\n                <div class=\"btn-group btn-group-toggle\" ngbRadioGroup name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <!-- (label.btn-primary>input[type=radio] [value=\"\"])*3 -->\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"bike\" />Bike</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"run\" />Run</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"row\" />Row</label>\n                </div>\n\n\n                <button class=\"btn btn-outline-info btn-sm ml-sm-2\" [popoverTitle]=\"popTitle\"\n                [ngbPopover]=\"popContent\" placement=\"right\" popoverClass=\"custom-popover\"\n                triggers=\"mouseenter:mouseleave\" #pop=\"ngbPopover\"\n                (shown)=\"popVisibilityChanged(pop)\" (hidden)=\"popVisibilityChanged(pop)\">?</button>\n                <ng-template #popTitle>\n                  <h4>Activity Type</h4>\n                </ng-template>\n                <ng-template #popContent>\n                    These buttons specify the type of <strong class=\"text-primary text-uppercase\">activity</strong>\n                </ng-template>\n\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Date:</label>\n              <div class=\"col-sm-6\">\n                <!-- <input type=\"text\" class=\"form-control\" name=\"wdate\" [(ngModel)]=\"workout.date\" /> -->\n                <!-- <ngb-datepicker #d name=\"wdate\" [(ngModel)]=\"workout.date\" [startDate]=\"startDate\" [maxDate]=\"maxDate\"></ngb-datepicker> -->\n\n                <div class=\"input-group\">\n                          <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                          ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div>\n                <!-- <div class=\"input-group\">\n                    <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                      ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div> -->\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Time:</label>\n              <div class=\"col-sm-6\"><!--[minuteStep]=\"15\"-->\n                <ngb-timepicker name=\"tp\" [(ngModel)]=\"workout.time\" [meridian]=\"true\" ></ngb-timepicker>\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Quality:</label>\n              <div class=\"col-sm-3 mt-sm-2\">\n                <ngb-rating [(rate)]=\"workout.rating\" [readonly]=\"false\" max=\"5\">\n                  <ng-template let-fill=\"fill\" let-index=\"index\">\n                    <span class=\"star\" [class.filled]=\"fill === 100\" [class.bad]=\"index < 2\">&#9733;</span>\n                  </ng-template>\n                </ngb-rating>\n              </div>\n            </div>\n\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Distance:</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" name=\"wdistance\" [(ngModel)]=\"workout.distance\"\n                        required pattern=\"\\d+\" #wdistance=\"ngModel\" />\n              </div>\n            </div>\n\n            <div *ngIf=\"wdistance.invalid && (wdistance.dirty || wdistance.touched)\">\n              <!-- <ngb-alert type=\"custom\" [dismissible]=\"true\" *ngIf=\"!isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Dismissible Alert\n              </ngb-alert> -->\n              <ngb-alert type=\"danger\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.required && !isDismissibleD\" (close)=\"isDismissibleD = !isDismissibleD\" >\n                <strong>Distance</strong> is required.\n              </ngb-alert>\n              <ngb-alert type=\"warning\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.pattern  && !isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Distance must be a valid number.\n              </ngb-alert>\n            </div>\n\n\n            <div class=\"form-group row\">\n                <label class=\"col-form-label col-sm-2\">Location:</label>\n                <div class=\"col-sm-6\">\n                  <input type=\"text\" class=\"form-control\" name=\"wlocation\" [(ngModel)]=\"workout.location\"\n                      [ngbTypeahead]=\"locationsSearch\" />\n                      <!-- [resultFormatter]=\"locationsFormatter\" [inputFormatter]=\"locationsFormatter\" -->\n                  <div>\n                    * type \"gym\" to see results\n                  </div>\n                </div>\n              </div>\n\n            <div class=\"form-group row\">\n              <div class=\"col-sm-6 mt-sm-3\">\n                <button class=\"btn btn-primary mr-sm-2\" (click)=\"save()\">Save</button>\n                <a class=\"btn btn-secondary\" [routerLink]=\"'/workouts'\">Cancel</a>\n              </div>\n            </div>\n\n          </form>\n        </div>\n      </div>\n</div>\n\n\n\n"
+module.exports = "<div class=\"\">\n    <ngx-loading [show]=\"loading\" ></ngx-loading>\n\n    <div class=\"card\">\n        <h3 class=\"card-header\">Entry</h3>\n        <div class=\"card-body\">\n          <form>\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Type:</label>\n              <div class=\"col-sm-6\">\n                <!-- <select class=\"form-control\" name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <option value=\"\">(Select)</option>\n                  <option value=\"bike\">Bike</option>\n                  <option value=\"run\">Run</option>\n                  <option value=\"row\">Row</option>\n                </select> -->\n                <div class=\"btn-group btn-group-toggle\" ngbRadioGroup name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <!-- (label.btn-primary>input[type=radio] [value=\"\"])*3 -->\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"bike\" />Bike</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"run\" />Run</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"row\" />Row</label>\n                </div>\n\n\n                <button class=\"btn btn-outline-info btn-sm ml-sm-2\" [popoverTitle]=\"popTitle\"\n                [ngbPopover]=\"popContent\" placement=\"right\" popoverClass=\"custom-popover\"\n                triggers=\"mouseenter:mouseleave\" #pop=\"ngbPopover\"\n                (shown)=\"popVisibilityChanged(pop)\" (hidden)=\"popVisibilityChanged(pop)\">?</button>\n                <ng-template #popTitle>\n                  <h4>Activity Type</h4>\n                </ng-template>\n                <ng-template #popContent>\n                    These buttons specify the type of <strong class=\"text-primary text-uppercase\">activity</strong>\n                </ng-template>\n\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Date:</label>\n              <div class=\"col-sm-6\">\n                <!-- <input type=\"text\" class=\"form-control\" name=\"wdate\" [(ngModel)]=\"workout.date\" /> -->\n                <!-- <ngb-datepicker #d name=\"wdate\" [(ngModel)]=\"workout.date\" [startDate]=\"startDate\" [maxDate]=\"maxDate\"></ngb-datepicker> -->\n\n                <div class=\"input-group\">\n                          <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                          ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div>\n                <!-- <div class=\"input-group\">\n                    <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                      ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div> -->\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Time:</label>\n              <div class=\"col-sm-6\"><!--[minuteStep]=\"15\"-->\n                <ngb-timepicker name=\"tp\" [(ngModel)]=\"workout.time\" [meridian]=\"true\" ></ngb-timepicker>\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Quality:</label>\n              <div class=\"col-sm-3 mt-sm-2\">\n                <ngb-rating [(rate)]=\"workout.rating\" [readonly]=\"false\" max=\"5\">\n                  <ng-template let-fill=\"fill\" let-index=\"index\">\n                    <span class=\"star\" [class.filled]=\"fill === 100\" [class.bad]=\"index < 2\">&#9733;</span>\n                  </ng-template>\n                </ngb-rating>\n              </div>\n            </div>\n\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Distance:</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" name=\"wdistance\" [(ngModel)]=\"workout.distance\"\n                        required pattern=\"\\d+\" #wdistance=\"ngModel\" />\n              </div>\n            </div>\n\n            <div *ngIf=\"wdistance.invalid && (wdistance.dirty || wdistance.touched)\">\n              <!-- <ngb-alert type=\"custom\" [dismissible]=\"true\" *ngIf=\"!isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Dismissible Alert\n              </ngb-alert> -->\n              <ngb-alert type=\"danger\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.required && !isDismissibleD\" (close)=\"isDismissibleD = !isDismissibleD\" >\n                <strong>Distance</strong> is required.\n              </ngb-alert>\n              <ngb-alert type=\"warning\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.pattern  && !isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Distance must be a valid number.\n              </ngb-alert>\n            </div>\n\n\n            <div class=\"form-group row\">\n                <label class=\"col-form-label col-sm-2\">Location:</label>\n                <div class=\"col-sm-6\">\n                  <input type=\"text\" class=\"form-control\" name=\"wlocation\" [(ngModel)]=\"workout.location\"\n                      [ngbTypeahead]=\"locationsSearch\"\n                      [resultFormatter]=\"locationsFormatter\" [inputFormatter]=\"locationsFormatter\" />\n\n                  <div>\n                    * type \"gym\" to see results\n                  </div>\n                </div>\n              </div>\n\n            <div class=\"form-group row\">\n              <div class=\"col-sm-6 mt-sm-3\">\n                <button class=\"btn btn-primary mr-sm-2\" (click)=\"save()\">Save</button>\n                <a class=\"btn btn-secondary\" [routerLink]=\"'/workouts'\">Cancel</a>\n              </div>\n            </div>\n\n          </form>\n        </div>\n      </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -340,8 +345,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 /* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var rxjs_operators__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs/operators */ "./node_modules/rxjs/_esm5/operators/index.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_5__);
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -351,7 +354,6 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 var __metadata = (undefined && undefined.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
-
 
 
 
@@ -369,26 +371,19 @@ var EntryEditorComponent = /** @class */ (function () {
         this.locations = [];
         this.errorMessage = '';
         // client side filtering
-        // locationsSearch = (text$: Observable<string>) =>
-        //   text$.pipe(
-        //     debounceTime(200),
-        //     distinctUntilChanged(),
-        //     map(term => term.length < 2 ? []
-        //       : this.locations.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-        //   )
-        //   locationsFormatter = (result) => result.name;
-        // server side filtering
         this.locationsSearch = function (text$) {
-            return text$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(200), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () { return _this.loading = true; }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["switchMap"])(function (term) { return _this.workoutService.searchLocations(term); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (locations) { return lodash__WEBPACK_IMPORTED_MODULE_5__["map"](locations, 'name'); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["tap"])(function () { return _this.loading = false; }));
+            return text$.pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["debounceTime"])(200), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["distinctUntilChanged"])(), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_4__["map"])(function (term) { return term.length < 2 ? []
+                : _this.locations.filter(function (v) { return v.name.toLowerCase().indexOf(term.toLowerCase()) > -1; }).slice(0, 10); }));
         };
-        this.locationsFormatter = function (result) { return result; };
+        this.locationsFormatter = function (result) { return result.name; };
         var today = new Date();
         this.maxDate = _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbDate"].from({ year: today.getFullYear(), month: today.getMonth() + 1, day: today.getDate() });
         // console.log(this.maxDate, 'this.maxDate');
     }
     EntryEditorComponent.prototype.ngOnInit = function () {
-        // this.workoutService.getLocations().subscribe(data => this.locations = data);
         var _this = this;
+        // client side filtering - this row
+        this.workoutService.getLocations().subscribe(function (data) { return _this.locations = data; });
         this.router.params.subscribe(function (params) {
             if (params.id !== 'new') {
                 _this.loading = true;
@@ -401,6 +396,17 @@ var EntryEditorComponent = /** @class */ (function () {
             }
         });
     };
+    // server side filtering (works with json-server) (not working with in-memory web api)
+    // locationsSearch = (text$: Observable<string>) =>
+    //   text$.pipe(
+    //     debounceTime(200),
+    //     distinctUntilChanged(),
+    //     tap(() => this.loading = true),
+    //     switchMap(term => this.workoutService.searchLocations(term)),
+    //     map(locations => _.map(locations, 'name')),
+    //     tap(() => this.loading = false)
+    //   )
+    // locationsFormatter = (result) => result;
     EntryEditorComponent.prototype.save = function () {
         var _this = this;
         this.loading = true;
@@ -727,10 +733,15 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var WorkoutsApiService = /** @class */ (function () {
     function WorkoutsApiService(http) {
         this.http = http;
-        this.baseUrl = 'http://localhost:3000';
+        // with JSON-SERVER
+        // private baseUrl = 'http://localhost:3000';
+        // with in-memory web api
+        this.baseUrl = '/api';
     }
     WorkoutsApiService.prototype.getWorkouts = function () {
-        return this.http.get(this.baseUrl + "/workouts").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        return this.http.get(this.baseUrl + "/workouts").pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getWorkout = function (id) {
         return this.http.get(this.baseUrl + "/workouts/" + id).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
@@ -756,16 +767,24 @@ var WorkoutsApiService = /** @class */ (function () {
         return this.http.get(this.baseUrl + "/locations").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.searchLocations = function (searchTerm) {
-        return this.http.get(this.baseUrl + "/locations?q=" + searchTerm).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        return this.http.get(this.baseUrl + "/locations?q=" + searchTerm).pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getPerfTargets = function () {
-        return this.http.get(this.baseUrl + "/performanceTargets").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        return this.http.get(this.baseUrl + "/performanceTargets").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log(JSON.stringify(data)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.savePerfTargets = function (perfTargets) {
         return this.http.put(this.baseUrl + "/performanceTargets", perfTargets).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        // return this.http.put<any>(`${this.baseUrl}/workouts/${workout.id}`, workout).pipe(
+        //   catchError(this.handleError)
+        // );
     };
     WorkoutsApiService.prototype.getWorkoutsPaged = function (currPage, pageSize) {
         return this.http.get(this.baseUrl + "/workouts?_page=" + currPage + "&_limit=" + pageSize).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+    };
+    WorkoutsApiService.prototype.getWorkoutsTotal = function () {
+        return this.http.get(this.baseUrl + "/workoutsTotal").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log('sssss', JSON.stringify(data)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.handleError = function (err) {
         var errorMessage = '';
@@ -794,6 +813,149 @@ var WorkoutsApiService = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/services/workouts-data.ts":
+/*!*******************************************!*\
+  !*** ./src/app/services/workouts-data.ts ***!
+  \*******************************************/
+/*! exports provided: WorkoutsData */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkoutsData", function() { return WorkoutsData; });
+var WorkoutsData = /** @class */ (function () {
+    function WorkoutsData() {
+    }
+    WorkoutsData.prototype.createDb = function () {
+        var workoutsTotal = {
+            'workoutsAmount': 6,
+            'id:': 100
+        };
+        var performanceTargets = {
+            'bike': '2500',
+            'run': '4000',
+            'row': '1000',
+            'id:': 5
+        };
+        var locations = [
+            {
+                'id': 1,
+                'name': 'Outfit Gym'
+            },
+            {
+                'id': 2,
+                'name': 'Shalom Gym'
+            },
+            {
+                'id': 3,
+                'name': 'Work Gym'
+            },
+            {
+                'id': 4,
+                'name': 'best Gym'
+            },
+            {
+                'id': 5,
+                'name': 'Caesar Gym'
+            },
+            {
+                'id': 6,
+                'name': 'Yarkon Park'
+            },
+            {
+                'id': 7,
+                'name': 'Big Park'
+            },
+            {
+                'id': 8,
+                'name': 'Hrtzl Park'
+            }
+        ];
+        var workouts = [
+            {
+                'rating': 4,
+                'date': '2018-11-7',
+                'time': {
+                    'hour': 13,
+                    'minute': 7,
+                    'second': 0
+                },
+                'distance': '100',
+                'type': 'row',
+                'location': 'Yarkon Park',
+                'id': 3
+            },
+            {
+                'rating': 5,
+                'type': 'run',
+                'date': '2018-11-14',
+                'time': null,
+                'distance': '50',
+                'location': 'best Gym',
+                'id': 4
+            },
+            {
+                'rating': 4,
+                'type': 'bike',
+                'date': '2018-11-23',
+                'time': {
+                    'hour': 14,
+                    'minute': 1,
+                    'second': 0
+                },
+                'distance': '100',
+                'location': 'Work Gym',
+                'id': 5
+            },
+            {
+                'rating': 5,
+                'date': '2018-11-1',
+                'type': 'bike',
+                'time': {
+                    'hour': 13,
+                    'minute': 3,
+                    'second': 0
+                },
+                'distance': '200',
+                'location': 'Outfit Gym',
+                'id': 7
+            },
+            {
+                'rating': 4,
+                'distance': '200',
+                'location': 'Outfit Gym',
+                'time': {
+                    'hour': 3,
+                    'minute': 4,
+                    'second': 0
+                },
+                'date': '2018-12-1',
+                'type': 'row',
+                'id': 8
+            },
+            {
+                'rating': 4,
+                'type': 'bike',
+                'date': '2018-11-16',
+                'time': {
+                    'hour': 16,
+                    'minute': 3,
+                    'second': 0
+                },
+                'distance': '200',
+                'location': 'Caesar Gym',
+                'id': 9
+            }
+        ];
+        return { workouts: workouts, workoutsTotal: workoutsTotal, locations: locations, performanceTargets: performanceTargets };
+    };
+    return WorkoutsData;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/workouts/workouts.component.html":
 /*!**************************************************!*\
   !*** ./src/app/workouts/workouts.component.html ***!
@@ -801,7 +963,7 @@ var WorkoutsApiService = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div>\n  <ngx-loading [show]=\"loading\" ></ngx-loading>\n\n  <div class=\"card\">\n    <div class=\"card-header\">\n      <h4 class=\"card-title\">Workouts</h4>\n    </div>\n    <div class=\"card-body\">\n      <button class=\"btn btn-sm btn-primary\" (click)=\"showPerfTargets()\">Set Performance Targets</button>\n      <button class=\"btn btn-sm\" [ngClass]=\"isCollapsed ? 'btn-info' : 'btn-outline-info'\" (click)=\"isCollapsed = !isCollapsed\">?</button>\n      <div class=\"mt-sm-2\" [ngbCollapse]=\"!isCollapsed\">\n          <div class=\"card\">\n            <div class=\"card-body\">\n              This will enable you to set performance targets for each activity and enable you to track progress\n            </div>\n          </div>\n      </div>\n\n      <hr />\n      <p><!--showValue=\"true\"-->\n        <ngb-progressbar [value]=\"totals.bike\" [max]=\"perfTargets.bike\"  height=\"20px\"\n            [type]=\"getPBType(totals.bike, perfTargets.bike)\">\n          (Bike) {{totals.bike}} of {{perfTargets.bike}}\n        </ngb-progressbar>\n      </p>\n      <p>\n        <ngb-progressbar [value]=\"totals.row\" [max]=\"perfTargets.row\" height=\"20px\"\n            [type]=\"getPBType(totals.row, perfTargets.row)\">\n          (Row) {{totals.row}} of {{perfTargets.row}}\n        </ngb-progressbar>\n      </p>\n      <p>\n        <ngb-progressbar [value]=\"totals.run\" [max]=\"perfTargets.run\" height=\"20px\"\n            [type]=\"getPBType(totals.run, perfTargets.run)\">\n          (Run) {{totals.run}} of {{perfTargets.run}}\n        </ngb-progressbar>\n      </p>\n    </div>\n  </div>\n\n\n\n  <div class=\"card\">\n      <h3 class=\"card-header\">\n        Workout Entries\n        <a [routerLink]=\"['/workouts', 'new']\" class=\"btn btn-sm btn-primary float-right\"\n           [ngbTooltip]=\"ttContent\" placement=\"left\" tooltipClass=\"custom-tooltip\">Add New Entry</a>\n        <!--[ngbTooltip]=\"ttContent\"  -->\n        <ng-template #ttContent>\n          Log a new <strong class=\"text-primary text-uppercase\">workout</strong> into your list\n        </ng-template>\n\n        <!-- triggers=\"click:blur\" is build in-->\n        <!-- <button class=\"btn btn-success\" ngbTooltip=\"This is just a test\" triggers=\"manual\"\n            #t=\"ngbTooltip\" (click)=\"t.open()\" [autoClose]=\"'inside'\">\n          Tooltip Test\n        </button> -->\n      </h3>\n      <div class=\"card-body\">\n\n        <div class=\"row\">\n          <div class=\"col\">\n            <ngb-pagination [collectionSize]=\"50\" boundaryLinks=\"true\"\n                [pageSize]=\"pageSize\" maxSize=\"5\" rotate=\"true\" [(page)]=\"currPage\"\n                (pageChange)=\"refreshGrid()\"></ngb-pagination>\n          </div>\n        </div>\n\n        <table class=\"table table-striped\">\n          <thead>\n            <th>Date</th>\n            <th>Type</th>\n            <th>Distance</th>\n            <th></th>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let entry of workouts\">\n              <td>{{entry.date}}</td>\n              <td>{{entry.type}}</td>\n              <td>{{entry.distance}}</td>\n              <td>\n                <a [routerLink]=\"['/workouts', entry.id]\" class=\"btn btn-info btn-sm mr-2\">Edit</a>\n                <button class=\"btn btn-danger btn-sm\" (click)=\"deleteWorkout(entry.id, deleteModal)\">Delete</button>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n\n        <!--TODO: PRogress Bar here-->\n\n      </div>\n  </div>\n\n\n\n  <ng-template #deleteModal let-modal>\n      <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Delete?</h4>\n      </div>\n      <div class=\"modal-body\">\n        <p>Are you sure you want to delete?</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button class=\"btn btn-success\" (click)=\"modal.close()\">Yes (Delete)</button>\n        <button class=\"btn btn-danger\" (click)=\"modal.dismiss()\">No</button>\n      </div>\n    </ng-template>\n\n</div>\n"
+module.exports = "<div>\n  <ngx-loading [show]=\"loading\" ></ngx-loading>\n\n  <div class=\"card\">\n    <div class=\"card-header\">\n      <h4 class=\"card-title\">Workouts</h4>\n    </div>\n    <div class=\"card-body\">\n      <button class=\"btn btn-sm btn-primary\" (click)=\"showPerfTargets()\">Set Performance Targets</button>\n      <button class=\"btn btn-sm\" [ngClass]=\"isCollapsed ? 'btn-info' : 'btn-outline-info'\" (click)=\"isCollapsed = !isCollapsed\">?</button>\n      <div class=\"mt-sm-2\" [ngbCollapse]=\"!isCollapsed\">\n          <div class=\"card\">\n            <div class=\"card-body\">\n              This will enable you to set performance targets for each activity and enable you to track progress\n            </div>\n          </div>\n      </div>\n\n      <hr />\n      <p><!--showValue=\"true\"-->\n        <ngb-progressbar [value]=\"totals.bike\" [max]=\"perfTargets.bike\"  height=\"20px\"\n            [type]=\"getPBType(totals.bike, perfTargets.bike)\">\n          (Bike) {{totals.bike}} of {{perfTargets.bike}}\n        </ngb-progressbar>\n      </p>\n      <p>\n        <ngb-progressbar [value]=\"totals.row\" [max]=\"perfTargets.row\" height=\"20px\"\n            [type]=\"getPBType(totals.row, perfTargets.row)\">\n          (Row) {{totals.row}} of {{perfTargets.row}}\n        </ngb-progressbar>\n      </p>\n      <p>\n        <ngb-progressbar [value]=\"totals.run\" [max]=\"perfTargets.run\" height=\"20px\"\n            [type]=\"getPBType(totals.run, perfTargets.run)\">\n          (Run) {{totals.run}} of {{perfTargets.run}}\n        </ngb-progressbar>\n      </p>\n    </div>\n  </div>\n\n\n\n  <div class=\"card\">\n      <h3 class=\"card-header\">\n        Workout Entries\n        <a [routerLink]=\"['/workouts', 'new']\" class=\"btn btn-sm btn-primary float-right\"\n           [ngbTooltip]=\"ttContent\" placement=\"left\" tooltipClass=\"custom-tooltip\">Add New Entry</a>\n        <!--[ngbTooltip]=\"ttContent\"  -->\n        <ng-template #ttContent>\n          Log a new <strong class=\"text-primary text-uppercase\">workout</strong> into your list\n        </ng-template>\n\n        <!-- triggers=\"click:blur\" is build in-->\n        <!-- <button class=\"btn btn-success\" ngbTooltip=\"This is just a test\" triggers=\"manual\"\n            #t=\"ngbTooltip\" (click)=\"t.open()\" [autoClose]=\"'inside'\">\n          Tooltip Test\n        </button> -->\n      </h3>\n      <div class=\"card-body\">\n        <div class=\"row\">\n          <div class=\"col\">\n            <!-- <ngb-pagination [collectionSize]=\"workoutsTotal\" boundaryLinks=\"true\"\n                [pageSize]=\"pageSize\" maxSize=\"5\" rotate=\"true\" [(page)]=\"currPage\"\n                (pageChange)=\"refreshGrid()\"></ngb-pagination> -->\n          </div>\n        </div>\n\n        <table class=\"table table-striped\">\n          <thead>\n            <th>Date</th>\n            <th>Type</th>\n            <th>Distance</th>\n            <th></th>\n          </thead>\n          <tbody>\n            <tr *ngFor=\"let entry of workouts\">\n              <td>{{entry.date}}</td>\n              <td>{{entry.type}}</td>\n              <td>{{entry.distance}}</td>\n              <td>\n                <a [routerLink]=\"['/workouts', entry.id]\" class=\"btn btn-info btn-sm mr-2\">Edit</a>\n                <button class=\"btn btn-danger btn-sm\" (click)=\"deleteWorkout(entry.id, deleteModal)\">Delete</button>\n              </td>\n            </tr>\n          </tbody>\n        </table>\n\n        <!--TODO: PRogress Bar here-->\n\n      </div>\n  </div>\n\n\n\n  <ng-template #deleteModal let-modal>\n      <div class=\"modal-header\">\n        <h4 class=\"modal-title\">Delete?</h4>\n      </div>\n      <div class=\"modal-body\">\n        <p>Are you sure you want to delete?</p>\n      </div>\n      <div class=\"modal-footer\">\n        <button class=\"btn btn-success\" (click)=\"modal.close()\">Yes (Delete)</button>\n        <button class=\"btn btn-danger\" (click)=\"modal.dismiss()\">No</button>\n      </div>\n    </ng-template>\n\n</div>\n"
 
 /***/ }),
 
@@ -870,17 +1032,18 @@ var WorkoutsComponent = /** @class */ (function () {
         // this.workoutService.getPerfTargets()
         var _this = this;
         this.loading = true;
-        Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["forkJoin"])(
-        // this.workoutService.getWorkouts(),
-        this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), this.workoutService.getPerfTargets()).subscribe(function (_a) {
-            var workoutsResult = _a[0], perfTargetsResult = _a[1];
+        Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["forkJoin"])(this.workoutService.getWorkoutsTotal(), this.workoutService.getWorkouts(), 
+        // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
+        this.workoutService.getPerfTargets()).subscribe(function (_a) {
+            var workoutsTotal = _a[0], workoutsResult = _a[1], perfTargetsResult = _a[2];
+            _this.workoutsTotal = workoutsTotal.workoutsAmount;
             // this.workoutsOrig = workoutsResult;
             _this.workouts = workoutsResult;
             // this.refreshGrid();
             _this.perfTargets = perfTargetsResult;
             _this.calculatePerformance();
             _this.loading = false;
-            // console.log('--workouts', this.workouts, this.perfTargets);
+            console.log('--workouts', _this.workouts, _this.perfTargets);
         }, function (error) { return _this.errorMessage = error; });
     };
     WorkoutsComponent.prototype.refreshGrid = function () {

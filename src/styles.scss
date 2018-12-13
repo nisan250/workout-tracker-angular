@@ -24,3 +24,13 @@ button.calendar, button.calendar:active {
   background-size: 23px;
   background-position: center;
 }
+ngx-loading {
+  .backdrop
+  {
+    position: fixed !important;
+  }
+  .spinner-three-bounce {
+    position: fixed !important;
+  }
+}
+

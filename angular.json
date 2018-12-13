@@ -25,7 +25,8 @@
             "assets": [
               "src/favicon.ico",
               "src/assets",
-              "src/data/db.json"
+              "src/data/db.json",
+              "src/api/workouts.json"
             ],
             "styles": [
               "src/styles.scss",

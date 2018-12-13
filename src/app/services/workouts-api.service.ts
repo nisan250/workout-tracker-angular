@@ -7,12 +7,17 @@ import { tap, catchError, map } from 'rxjs/operators';
 })
 export class WorkoutsApiService {
 
-  private baseUrl = 'http://localhost:3000';
+  // with JSON-SERVER
+  // private baseUrl = 'http://localhost:3000';
+
+  // with in-memory web api
+  private baseUrl = '/api';
 
   constructor(private http: HttpClient) {}
 
   getWorkouts(): Observable<any[]> {
     return this.http.get<any[]>(`${this.baseUrl}/workouts`).pipe(
+      // tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
@@ -55,12 +60,14 @@ export class WorkoutsApiService {
 
   searchLocations(searchTerm: string): Observable<any[]>  {
     return this.http.get<any[]>(`${this.baseUrl}/locations?q=${searchTerm}`).pipe(
+      // tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
 
   getPerfTargets(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/performanceTargets`).pipe(
+      tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
@@ -69,6 +76,9 @@ export class WorkoutsApiService {
     return this.http.put<any>(`${this.baseUrl}/performanceTargets`, perfTargets).pipe(
       catchError(this.handleError)
     );
+    // return this.http.put<any>(`${this.baseUrl}/workouts/${workout.id}`, workout).pipe(
+    //   catchError(this.handleError)
+    // );
   }
 
   getWorkoutsPaged(currPage: number, pageSize: number): Observable<any[]> {
@@ -76,6 +86,16 @@ export class WorkoutsApiService {
       catchError(this.handleError)
     );
   }
+
+  getWorkoutsTotal(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/workoutsTotal`).pipe(
+      tap(data => console.log('sssss', JSON.stringify(data))),
+      catchError(this.handleError)
+    );
+  }
+
+
+
 
   private handleError(err: HttpErrorResponse) {
     let errorMessage = '';

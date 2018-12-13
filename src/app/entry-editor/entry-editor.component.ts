@@ -30,7 +30,8 @@ export class EntryEditorComponent implements OnInit {
     }
 
   ngOnInit(): void {
-    // this.workoutService.getLocations().subscribe(data => this.locations = data);
+    // client side filtering - this row
+    this.workoutService.getLocations().subscribe(data => this.locations = data);
 
     this.router.params.subscribe(params => {
       if (params.id !== 'new') {
@@ -48,27 +49,27 @@ export class EntryEditorComponent implements OnInit {
   }
 
   // client side filtering
-  // locationsSearch = (text$: Observable<string>) =>
-  //   text$.pipe(
-  //     debounceTime(200),
-  //     distinctUntilChanged(),
-  //     map(term => term.length < 2 ? []
-  //       : this.locations.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
-  //   )
-  //   locationsFormatter = (result) => result.name;
-
-  // server side filtering
   locationsSearch = (text$: Observable<string>) =>
     text$.pipe(
       debounceTime(200),
       distinctUntilChanged(),
-      tap(() => this.loading = true),
-      switchMap(term => this.workoutService.searchLocations(term)),
-      map(locations => _.map(locations, 'name')),
-      tap(() => this.loading = false)
+      map(term => term.length < 2 ? []
+        : this.locations.filter(v => v.name.toLowerCase().indexOf(term.toLowerCase()) > -1).slice(0, 10))
     )
+    locationsFormatter = (result) => result.name;
 
-  locationsFormatter = (result) => result;
+  // server side filtering (works with json-server) (not working with in-memory web api)
+  // locationsSearch = (text$: Observable<string>) =>
+  //   text$.pipe(
+  //     debounceTime(200),
+  //     distinctUntilChanged(),
+  //     tap(() => this.loading = true),
+  //     switchMap(term => this.workoutService.searchLocations(term)),
+  //     map(locations => _.map(locations, 'name')),
+  //     tap(() => this.loading = false)
+  //   )
+
+  // locationsFormatter = (result) => result;
 
   save() {
     this.loading = true;

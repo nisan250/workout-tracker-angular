@@ -15,6 +15,7 @@ export class WorkoutsComponent implements OnInit {
   // public workoutsOrig = [];
   public loading = false;
   public perfTargets = {};
+  public workoutsTotal;
   public totals = {};
   public pageSize = 5;
   public currPage = 1;
@@ -32,17 +33,19 @@ export class WorkoutsComponent implements OnInit {
 
     this.loading = true;
     forkJoin(
-      // this.workoutService.getWorkouts(),
-      this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize),
+      this.workoutService.getWorkoutsTotal(),
+      this.workoutService.getWorkouts(),
+      // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
       this.workoutService.getPerfTargets(),
-    ).subscribe(([workoutsResult, perfTargetsResult]) => {
+    ).subscribe(([workoutsTotal, workoutsResult, perfTargetsResult]) => {
+        this.workoutsTotal = workoutsTotal.workoutsAmount;
         // this.workoutsOrig = workoutsResult;
         this.workouts = workoutsResult;
         // this.refreshGrid();
         this.perfTargets = perfTargetsResult;
         this.calculatePerformance();
         this.loading = false;
-        // console.log('--workouts', this.workouts, this.perfTargets);
+        console.log('--workouts', this.workouts, this.perfTargets);
     },
       error => this.errorMessage = <any>error
     );

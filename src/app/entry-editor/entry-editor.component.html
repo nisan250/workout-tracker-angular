@@ -103,8 +103,9 @@
                 <label class="col-form-label col-sm-2">Location:</label>
                 <div class="col-sm-6">
                   <input type="text" class="form-control" name="wlocation" [(ngModel)]="workout.location"
-                      [ngbTypeahead]="locationsSearch" />
-                      <!-- [resultFormatter]="locationsFormatter" [inputFormatter]="locationsFormatter" -->
+                      [ngbTypeahead]="locationsSearch"
+                      [resultFormatter]="locationsFormatter" [inputFormatter]="locationsFormatter" />
+
                   <div>
                     * type "gym" to see results
                   </div>

@@ -3,6 +3,9 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
+import { WorkoutsData } from './services/workouts-data';
+
 // Third party imports
 import { NgxLoadingModule } from 'ngx-loading';
 import { NgbModule, NgbDateAdapter } from '@ng-bootstrap/ng-bootstrap';
@@ -34,7 +37,8 @@ import { AdminComponent } from './admin/admin.component';
     HttpClientModule,
     NgxLoadingModule.forRoot({}),
     FormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    InMemoryWebApiModule.forRoot(WorkoutsData)
   ],
   providers: [
     WorkoutsApiService,
