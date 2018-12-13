@@ -1,9 +1,11 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 import { WorkoutsApiService } from '../services/workouts-api.service';
 import * as _ from 'lodash';
 import { NgbModal, NgbModalOptions } from '@ng-bootstrap/ng-bootstrap';
 import { forkJoin } from 'rxjs';
 import { PerformanceTargetsModalComponent } from '../performance-targets-modal/performance-targets-modal.component';
+
 @Component({
   selector: 'app-workouts',
   templateUrl: './workouts.component.html',
@@ -20,8 +22,9 @@ export class WorkoutsComponent implements OnInit {
   public pageSize = 5;
   public currPage = 1;
   public errorMessage = '';
+  public workoutss = [];
 
-  constructor(private workoutService: WorkoutsApiService, private modal: NgbModal) { }
+  constructor(private route: ActivatedRoute, private workoutService: WorkoutsApiService, private modal: NgbModal) { }
 
   ngOnInit() {
     // this.loading = true;
@@ -31,24 +34,33 @@ export class WorkoutsComponent implements OnInit {
     // });
     // this.workoutService.getPerfTargets()
 
-    this.loading = true;
-    forkJoin(
-      this.workoutService.getWorkoutsTotal(),
-      this.workoutService.getWorkouts(),
-      // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
-      this.workoutService.getPerfTargets(),
-    ).subscribe(([workoutsTotal, workoutsResult, perfTargetsResult]) => {
-        this.workoutsTotal = workoutsTotal.workoutsAmount;
-        // this.workoutsOrig = workoutsResult;
-        this.workouts = workoutsResult;
-        // this.refreshGrid();
-        this.perfTargets = perfTargetsResult;
-        this.calculatePerformance();
-        this.loading = false;
-        console.log('--workouts', this.workouts, this.perfTargets);
-    },
-      error => this.errorMessage = <any>error
-    );
+    // this.loading = true;
+    // USING RESOLVER
+    this.workoutss = this.route.snapshot.data['workouts'];
+    this.workoutsTotal = this.route.snapshot.data['workouts'][0];
+    this.workouts = this.route.snapshot.data['workouts'][1];
+    this.perfTargets = this.route.snapshot.data['workouts'][2];
+    // console.log(this.perfTargets);
+    this.calculatePerformance();
+    this.loading = false;
+
+    // forkJoin(
+    //   this.workoutService.getWorkoutsTotal(),
+    //   this.workoutService.getWorkouts(),
+    //   // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
+    //   this.workoutService.getPerfTargets(),
+    // ).subscribe(([workoutsTotal, workoutsResult, perfTargetsResult]) => {
+    //     this.workoutsTotal = workoutsTotal.workoutsAmount;
+    //     // this.workoutsOrig = workoutsResult;
+    //     this.workouts = workoutsResult;
+    //     // this.refreshGrid();
+    //     this.perfTargets = perfTargetsResult;
+    //     this.calculatePerformance();
+    //     this.loading = false;
+    //     console.log('--workouts', this.workouts, this.perfTargets);
+    // },
+    //   error => this.errorMessage = <any>error
+    // );
   }
 
   refreshGrid() {

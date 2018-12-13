@@ -30,22 +30,30 @@ export class EntryEditorComponent implements OnInit {
     }
 
   ngOnInit(): void {
+    // get data  from a resolve on the route
+    if (this.router.snapshot.data['workout'] !== 'new') {
+      this.workout = this.router.snapshot.data['workout'];
+      const d = new Date(this.workout.date);
+      this.startDate = {year: d.getFullYear(), month: d.getMonth() + 1};
+      this.loading = false;
+    }
+    // this.router.params.subscribe(params => {
+    //   debugger;
+    //   if (params.id !== 'new') {
+    //     this.loading = true;
+    //     this.workoutService.getWorkout(params.id).subscribe(data => {
+    //       this.workout = data;
+    //       const d = new Date(this.workout.date);
+    //       this.startDate = {year: d.getFullYear(), month: d.getMonth() + 1};
+    //       this.loading = false;
+    //     },
+    //       error => this.errorMessage = <any>error
+    //     );
+    //   }
+    // });
+
     // client side filtering - this row
     this.workoutService.getLocations().subscribe(data => this.locations = data);
-
-    this.router.params.subscribe(params => {
-      if (params.id !== 'new') {
-        this.loading = true;
-        this.workoutService.getWorkout(params.id).subscribe(data => {
-          this.workout = data;
-          const d = new Date(this.workout.date);
-          this.startDate = {year: d.getFullYear(), month: d.getMonth() + 1};
-          this.loading = false;
-        },
-          error => this.errorMessage = <any>error
-        );
-      }
-    });
   }
 
   // client side filtering

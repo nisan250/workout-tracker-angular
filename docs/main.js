@@ -123,6 +123,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./workouts/workouts.component */ "./src/app/workouts/workouts.component.ts");
 /* harmony import */ var _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./entry-editor/entry-editor.component */ "./src/app/entry-editor/entry-editor.component.ts");
 /* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _entry_editor_workout_resolver_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./entry-editor/workout-resolver.service */ "./src/app/entry-editor/workout-resolver.service.ts");
+/* harmony import */ var _workouts_workouts_resolver_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./workouts/workouts-resolver.service */ "./src/app/workouts/workouts-resolver.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -135,10 +137,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+
+
 var routes = [
     { path: '', component: _home_home_component__WEBPACK_IMPORTED_MODULE_2__["HomeComponent"] },
-    { path: 'workouts', component: _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_3__["WorkoutsComponent"] },
-    { path: 'workouts/:id', component: _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_4__["EntryEditorComponent"] },
+    { path: 'workouts', component: _workouts_workouts_component__WEBPACK_IMPORTED_MODULE_3__["WorkoutsComponent"], resolve: { workouts: _workouts_workouts_resolver_service__WEBPACK_IMPORTED_MODULE_7__["WorkoutsResolverService"] } },
+    { path: 'workouts/:id', component: _entry_editor_entry_editor_component__WEBPACK_IMPORTED_MODULE_4__["EntryEditorComponent"], resolve: { workout: _entry_editor_workout_resolver_service__WEBPACK_IMPORTED_MODULE_6__["WorkoutResolverService"] } },
     { path: 'admin', component: _admin_admin_component__WEBPACK_IMPORTED_MODULE_5__["AdminComponent"] }
 ];
 var AppRoutingModule = /** @class */ (function () {
@@ -164,7 +168,7 @@ var AppRoutingModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "\n<div>\n  <app-nav-menu></app-nav-menu>\n  <router-outlet></router-outlet>\n</div>\n\n"
+module.exports = "<ngx-loading [show]=\"loading\"></ngx-loading>\n<div>\n\n  <app-nav-menu></app-nav-menu>\n  <router-outlet></router-outlet>\n</div>\n\n"
 
 /***/ }),
 
@@ -190,23 +194,45 @@ module.exports = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AppComponent", function() { return AppComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
 
 var AppComponent = /** @class */ (function () {
-    function AppComponent() {
+    function AppComponent(router) {
+        var _this = this;
+        this.router = router;
         this.title = 'workout-tracker-angular';
+        this.loading = true;
+        router.events.subscribe(function (routerEvent) {
+            _this.handleRouterEvent(routerEvent);
+        });
     }
+    AppComponent.prototype.handleRouterEvent = function (routerEvent) {
+        if (routerEvent instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationStart"]) {
+            this.loading = true;
+        }
+        if (routerEvent instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationEnd"] ||
+            routerEvent instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationCancel"] ||
+            routerEvent instanceof _angular_router__WEBPACK_IMPORTED_MODULE_1__["NavigationError"]) {
+            this.loading = false;
+        }
+    };
     AppComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-root',
             template: __webpack_require__(/*! ./app.component.html */ "./src/app/app.component.html"),
             styles: [__webpack_require__(/*! ./app.component.scss */ "./src/app/app.component.scss")]
-        })
+        }),
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
     ], AppComponent);
     return AppComponent;
 }());
@@ -243,6 +269,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _services_date_string_adapter_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! ./services/date-string-adapter.service */ "./src/app/services/date-string-adapter.service.ts");
 /* harmony import */ var _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! ./performance-targets-modal/performance-targets-modal.component */ "./src/app/performance-targets-modal/performance-targets-modal.component.ts");
 /* harmony import */ var _admin_admin_component__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ./admin/admin.component */ "./src/app/admin/admin.component.ts");
+/* harmony import */ var _entry_editor_workout_resolver_service__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! ./entry-editor/workout-resolver.service */ "./src/app/entry-editor/workout-resolver.service.ts");
+/* harmony import */ var _workouts_workouts_resolver_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! ./workouts/workouts-resolver.service */ "./src/app/workouts/workouts-resolver.service.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -253,9 +281,12 @@ var __decorate = (undefined && undefined.__decorate) || function (decorators, ta
 
 
 
+// Imports for loading & configuring the in-memory web api
 
 
 // Third party imports
+
+
 
 
 
@@ -293,6 +324,8 @@ var AppModule = /** @class */ (function () {
             ],
             providers: [
                 _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_14__["WorkoutsApiService"],
+                _entry_editor_workout_resolver_service__WEBPACK_IMPORTED_MODULE_18__["WorkoutResolverService"],
+                _workouts_workouts_resolver_service__WEBPACK_IMPORTED_MODULE_19__["WorkoutsResolverService"],
                 { provide: _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_7__["NgbDateAdapter"], useClass: _services_date_string_adapter_service__WEBPACK_IMPORTED_MODULE_15__["DateStringAdapterService"] }
             ],
             entryComponents: [
@@ -315,7 +348,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<div class=\"\">\n    <ngx-loading [show]=\"loading\" ></ngx-loading>\n\n    <div class=\"card\">\n        <h3 class=\"card-header\">Entry</h3>\n        <div class=\"card-body\">\n          <form>\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Type:</label>\n              <div class=\"col-sm-6\">\n                <!-- <select class=\"form-control\" name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <option value=\"\">(Select)</option>\n                  <option value=\"bike\">Bike</option>\n                  <option value=\"run\">Run</option>\n                  <option value=\"row\">Row</option>\n                </select> -->\n                <div class=\"btn-group btn-group-toggle\" ngbRadioGroup name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <!-- (label.btn-primary>input[type=radio] [value=\"\"])*3 -->\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"bike\" />Bike</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"run\" />Run</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"row\" />Row</label>\n                </div>\n\n\n                <button class=\"btn btn-outline-info btn-sm ml-sm-2\" [popoverTitle]=\"popTitle\"\n                [ngbPopover]=\"popContent\" placement=\"right\" popoverClass=\"custom-popover\"\n                triggers=\"mouseenter:mouseleave\" #pop=\"ngbPopover\"\n                (shown)=\"popVisibilityChanged(pop)\" (hidden)=\"popVisibilityChanged(pop)\">?</button>\n                <ng-template #popTitle>\n                  <h4>Activity Type</h4>\n                </ng-template>\n                <ng-template #popContent>\n                    These buttons specify the type of <strong class=\"text-primary text-uppercase\">activity</strong>\n                </ng-template>\n\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Date:</label>\n              <div class=\"col-sm-6\">\n                <!-- <input type=\"text\" class=\"form-control\" name=\"wdate\" [(ngModel)]=\"workout.date\" /> -->\n                <!-- <ngb-datepicker #d name=\"wdate\" [(ngModel)]=\"workout.date\" [startDate]=\"startDate\" [maxDate]=\"maxDate\"></ngb-datepicker> -->\n\n                <div class=\"input-group\">\n                          <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                          ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div>\n                <!-- <div class=\"input-group\">\n                    <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                      ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div> -->\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Time:</label>\n              <div class=\"col-sm-6\"><!--[minuteStep]=\"15\"-->\n                <ngb-timepicker name=\"tp\" [(ngModel)]=\"workout.time\" [meridian]=\"true\" ></ngb-timepicker>\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Quality:</label>\n              <div class=\"col-sm-3 mt-sm-2\">\n                <ngb-rating [(rate)]=\"workout.rating\" [readonly]=\"false\" max=\"5\">\n                  <ng-template let-fill=\"fill\" let-index=\"index\">\n                    <span class=\"star\" [class.filled]=\"fill === 100\" [class.bad]=\"index < 2\">&#9733;</span>\n                  </ng-template>\n                </ngb-rating>\n              </div>\n            </div>\n\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Distance:</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" name=\"wdistance\" [(ngModel)]=\"workout.distance\"\n                        required pattern=\"\\d+\" #wdistance=\"ngModel\" />\n              </div>\n            </div>\n\n            <div *ngIf=\"wdistance.invalid && (wdistance.dirty || wdistance.touched)\">\n              <!-- <ngb-alert type=\"custom\" [dismissible]=\"true\" *ngIf=\"!isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Dismissible Alert\n              </ngb-alert> -->\n              <ngb-alert type=\"danger\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.required && !isDismissibleD\" (close)=\"isDismissibleD = !isDismissibleD\" >\n                <strong>Distance</strong> is required.\n              </ngb-alert>\n              <ngb-alert type=\"warning\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.pattern  && !isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Distance must be a valid number.\n              </ngb-alert>\n            </div>\n\n\n            <div class=\"form-group row\">\n                <label class=\"col-form-label col-sm-2\">Location:</label>\n                <div class=\"col-sm-6\">\n                  <input type=\"text\" class=\"form-control\" name=\"wlocation\" [(ngModel)]=\"workout.location\"\n                      [ngbTypeahead]=\"locationsSearch\"\n                      [resultFormatter]=\"locationsFormatter\" [inputFormatter]=\"locationsFormatter\" />\n\n                  <div>\n                    * type \"gym\" to see results\n                  </div>\n                </div>\n              </div>\n\n            <div class=\"form-group row\">\n              <div class=\"col-sm-6 mt-sm-3\">\n                <button class=\"btn btn-primary mr-sm-2\" (click)=\"save()\">Save</button>\n                <a class=\"btn btn-secondary\" [routerLink]=\"'/workouts'\">Cancel</a>\n              </div>\n            </div>\n\n          </form>\n        </div>\n      </div>\n</div>\n\n\n\n"
+module.exports = "<div class=\"\">\n    <!-- <ngx-loading [show]=\"loading\" ></ngx-loading> -->\n\n    <div class=\"card\">\n        <h3 class=\"card-header\">Entry</h3>\n        <div class=\"card-body\">\n          <form>\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Type:</label>\n              <div class=\"col-sm-6\">\n                <!-- <select class=\"form-control\" name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <option value=\"\">(Select)</option>\n                  <option value=\"bike\">Bike</option>\n                  <option value=\"run\">Run</option>\n                  <option value=\"row\">Row</option>\n                </select> -->\n                <div class=\"btn-group btn-group-toggle\" ngbRadioGroup name=\"wtype\" [(ngModel)]=\"workout.type\">\n                  <!-- (label.btn-primary>input[type=radio] [value=\"\"])*3 -->\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"bike\" />Bike</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"run\" />Run</label>\n                  <label ngbButtonLabel class=\"btn-primary\"><input ngbButton type=\"radio\" value=\"row\" />Row</label>\n                </div>\n\n\n                <button class=\"btn btn-outline-info btn-sm ml-sm-2\" [popoverTitle]=\"popTitle\"\n                [ngbPopover]=\"popContent\" placement=\"right\" popoverClass=\"custom-popover\"\n                triggers=\"mouseenter:mouseleave\" #pop=\"ngbPopover\"\n                (shown)=\"popVisibilityChanged(pop)\" (hidden)=\"popVisibilityChanged(pop)\">?</button>\n                <ng-template #popTitle>\n                  <h4>Activity Type</h4>\n                </ng-template>\n                <ng-template #popContent>\n                    These buttons specify the type of <strong class=\"text-primary text-uppercase\">activity</strong>\n                </ng-template>\n\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Date:</label>\n              <div class=\"col-sm-6\">\n                <!-- <input type=\"text\" class=\"form-control\" name=\"wdate\" [(ngModel)]=\"workout.date\" /> -->\n                <!-- <ngb-datepicker #d name=\"wdate\" [(ngModel)]=\"workout.date\" [startDate]=\"startDate\" [maxDate]=\"maxDate\"></ngb-datepicker> -->\n\n                <div class=\"input-group\">\n                          <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                          ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div>\n                <!-- <div class=\"input-group\">\n                    <input class=\"form-control\" placeholder=\"yyyy-mm-dd\" name=\"wdate\" [(ngModel)]=\"workout.date\" [maxDate]=\"maxDate\"\n                      ngbDatepicker #d=\"ngbDatepicker\">\n                    <div class=\"input-group-append\">\n                      <button class=\"btn btn-info calendar\" (click)=\"d.toggle()\" type=\"button\"></button>\n                    </div>\n                </div> -->\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Time:</label>\n              <div class=\"col-sm-6\"><!--[minuteStep]=\"15\"-->\n                <ngb-timepicker name=\"tp\" [(ngModel)]=\"workout.time\" [meridian]=\"true\" ></ngb-timepicker>\n              </div>\n            </div>\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Quality:</label>\n              <div class=\"col-sm-3 mt-sm-2\">\n                <ngb-rating [(rate)]=\"workout.rating\" [readonly]=\"false\" max=\"5\">\n                  <ng-template let-fill=\"fill\" let-index=\"index\">\n                    <span class=\"star\" [class.filled]=\"fill === 100\" [class.bad]=\"index < 2\">&#9733;</span>\n                  </ng-template>\n                </ngb-rating>\n              </div>\n            </div>\n\n\n            <div class=\"form-group row\">\n              <label class=\"col-form-label col-sm-2\">Distance:</label>\n              <div class=\"col-sm-6\">\n                <input type=\"text\" class=\"form-control\" name=\"wdistance\" [(ngModel)]=\"workout.distance\"\n                        required pattern=\"\\d+\" #wdistance=\"ngModel\" />\n              </div>\n            </div>\n\n            <div *ngIf=\"wdistance.invalid && (wdistance.dirty || wdistance.touched)\">\n              <!-- <ngb-alert type=\"custom\" [dismissible]=\"true\" *ngIf=\"!isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Dismissible Alert\n              </ngb-alert> -->\n              <ngb-alert type=\"danger\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.required && !isDismissibleD\" (close)=\"isDismissibleD = !isDismissibleD\" >\n                <strong>Distance</strong> is required.\n              </ngb-alert>\n              <ngb-alert type=\"warning\" [dismissible]=\"true\" *ngIf=\"wdistance.errors.pattern  && !isDismissible\" (close)=\"isDismissible = !isDismissible\">\n                Distance must be a valid number.\n              </ngb-alert>\n            </div>\n\n\n            <div class=\"form-group row\">\n                <label class=\"col-form-label col-sm-2\">Location:</label>\n                <div class=\"col-sm-6\">\n                  <input type=\"text\" class=\"form-control\" name=\"wlocation\" [(ngModel)]=\"workout.location\"\n                      [ngbTypeahead]=\"locationsSearch\"\n                      [resultFormatter]=\"locationsFormatter\" [inputFormatter]=\"locationsFormatter\" />\n\n                  <div>\n                    * type \"gym\" to see results\n                  </div>\n                </div>\n              </div>\n\n            <div class=\"form-group row\">\n              <div class=\"col-sm-6 mt-sm-3\">\n                <button class=\"btn btn-primary mr-sm-2\" (click)=\"save()\">Save</button>\n                <a class=\"btn btn-secondary\" [routerLink]=\"'/workouts'\">Cancel</a>\n              </div>\n            </div>\n\n          </form>\n        </div>\n      </div>\n</div>\n\n\n\n"
 
 /***/ }),
 
@@ -382,19 +415,29 @@ var EntryEditorComponent = /** @class */ (function () {
     }
     EntryEditorComponent.prototype.ngOnInit = function () {
         var _this = this;
+        // get data  from a resolve on the route
+        if (this.router.snapshot.data['workout'] !== 'new') {
+            this.workout = this.router.snapshot.data['workout'];
+            var d = new Date(this.workout.date);
+            this.startDate = { year: d.getFullYear(), month: d.getMonth() + 1 };
+            this.loading = false;
+        }
+        // this.router.params.subscribe(params => {
+        //   debugger;
+        //   if (params.id !== 'new') {
+        //     this.loading = true;
+        //     this.workoutService.getWorkout(params.id).subscribe(data => {
+        //       this.workout = data;
+        //       const d = new Date(this.workout.date);
+        //       this.startDate = {year: d.getFullYear(), month: d.getMonth() + 1};
+        //       this.loading = false;
+        //     },
+        //       error => this.errorMessage = <any>error
+        //     );
+        //   }
+        // });
         // client side filtering - this row
         this.workoutService.getLocations().subscribe(function (data) { return _this.locations = data; });
-        this.router.params.subscribe(function (params) {
-            if (params.id !== 'new') {
-                _this.loading = true;
-                _this.workoutService.getWorkout(params.id).subscribe(function (data) {
-                    _this.workout = data;
-                    var d = new Date(_this.workout.date);
-                    _this.startDate = { year: d.getFullYear(), month: d.getMonth() + 1 };
-                    _this.loading = false;
-                }, function (error) { return _this.errorMessage = error; });
-            }
-        });
     };
     // server side filtering (works with json-server) (not working with in-memory web api)
     // locationsSearch = (text$: Observable<string>) =>
@@ -430,6 +473,58 @@ var EntryEditorComponent = /** @class */ (function () {
             _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_1__["WorkoutsApiService"]])
     ], EntryEditorComponent);
     return EntryEditorComponent;
+}());
+
+
+
+/***/ }),
+
+/***/ "./src/app/entry-editor/workout-resolver.service.ts":
+/*!**********************************************************!*\
+  !*** ./src/app/entry-editor/workout-resolver.service.ts ***!
+  \**********************************************************/
+/*! exports provided: WorkoutResolverService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkoutResolverService", function() { return WorkoutResolverService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/workouts-api.service */ "./src/app/services/workouts-api.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+// import { map, catchError } from 'rxjs/operators';
+
+var WorkoutResolverService = /** @class */ (function () {
+    function WorkoutResolverService(workoutService, router) {
+        this.workoutService = workoutService;
+        this.router = router;
+    }
+    WorkoutResolverService.prototype.resolve = function (route, state) {
+        if (route.params['id'] !== 'new') {
+            return this.workoutService.getWorkout(+route.params['id']);
+        }
+        else {
+            return route.params['id'];
+        }
+    };
+    WorkoutResolverService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_services_workouts_api_service__WEBPACK_IMPORTED_MODULE_2__["WorkoutsApiService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], WorkoutResolverService);
+    return WorkoutResolverService;
 }());
 
 
@@ -482,8 +577,10 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 var HomeComponent = /** @class */ (function () {
     function HomeComponent() {
         this.stepComplete = 0;
+        this.loading = false;
     }
     HomeComponent.prototype.ngOnInit = function () {
+        this.loading = false;
     };
     HomeComponent.prototype.nextButton = function (step) {
         this.stepComplete = step;
@@ -772,7 +869,9 @@ var WorkoutsApiService = /** @class */ (function () {
         Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getPerfTargets = function () {
-        return this.http.get(this.baseUrl + "/performanceTargets").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log(JSON.stringify(data)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        return this.http.get(this.baseUrl + "/performanceTargets").pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.savePerfTargets = function (perfTargets) {
         return this.http.put(this.baseUrl + "/performanceTargets", perfTargets).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
@@ -784,9 +883,12 @@ var WorkoutsApiService = /** @class */ (function () {
         return this.http.get(this.baseUrl + "/workouts?_page=" + currPage + "&_limit=" + pageSize).pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.getWorkoutsTotal = function () {
-        return this.http.get(this.baseUrl + "/workoutsTotal").pipe(Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["tap"])(function (data) { return console.log('sssss', JSON.stringify(data)); }), Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
+        return this.http.get(this.baseUrl + "/workoutsTotal").pipe(
+        // tap(data => console.log(JSON.stringify(data))),
+        Object(rxjs_operators__WEBPACK_IMPORTED_MODULE_3__["catchError"])(this.handleError));
     };
     WorkoutsApiService.prototype.handleError = function (err) {
+        this.loading = false;
         var errorMessage = '';
         if (err.error instanceof ErrorEvent) {
             // client-side or network error
@@ -795,7 +897,8 @@ var WorkoutsApiService = /** @class */ (function () {
         else {
             // backend error with response code
             errorMessage = "backend error with response code or network error ---> error " + err.message;
-            alert("To use this app in action you have to downlowd the data/db.json file\n              from the github repository to your local machine and run json-server(localhost:3000)");
+            // alert(`To use this app in action you have to downlowd the data/db.json file
+            //         from the github repository to your local machine and run json-server(localhost:3000)`);
         }
         console.log(errorMessage);
         return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["throwError"])(errorMessage);
@@ -852,7 +955,7 @@ var WorkoutsData = /** @class */ (function () {
             },
             {
                 'id': 4,
-                'name': 'best Gym'
+                'name': 'Best Gym'
             },
             {
                 'id': 5,
@@ -891,7 +994,7 @@ var WorkoutsData = /** @class */ (function () {
                 'date': '2018-11-14',
                 'time': null,
                 'distance': '50',
-                'location': 'best Gym',
+                'location': 'Best Gym',
                 'id': 4
             },
             {
@@ -956,6 +1059,57 @@ var WorkoutsData = /** @class */ (function () {
 
 /***/ }),
 
+/***/ "./src/app/workouts/workouts-resolver.service.ts":
+/*!*******************************************************!*\
+  !*** ./src/app/workouts/workouts-resolver.service.ts ***!
+  \*******************************************************/
+/*! exports provided: WorkoutsResolverService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkoutsResolverService", function() { return WorkoutsResolverService; });
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../services/workouts-api.service */ "./src/app/services/workouts-api.service.ts");
+var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
+var __metadata = (undefined && undefined.__metadata) || function (k, v) {
+    if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
+};
+
+
+
+// import { map, catchError } from 'rxjs/operators';
+
+var WorkoutsResolverService = /** @class */ (function () {
+    function WorkoutsResolverService(workoutService, router) {
+        this.workoutService = workoutService;
+        this.router = router;
+    }
+    WorkoutsResolverService.prototype.resolve = function (route, state) {
+        return Object(rxjs__WEBPACK_IMPORTED_MODULE_2__["forkJoin"])(this.workoutService.getWorkoutsTotal(), this.workoutService.getWorkouts(), 
+        // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
+        this.workoutService.getPerfTargets());
+    };
+    WorkoutsResolverService = __decorate([
+        Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])({
+            providedIn: 'root'
+        }),
+        __metadata("design:paramtypes", [_services_workouts_api_service__WEBPACK_IMPORTED_MODULE_3__["WorkoutsApiService"], _angular_router__WEBPACK_IMPORTED_MODULE_1__["Router"]])
+    ], WorkoutsResolverService);
+    return WorkoutsResolverService;
+}());
+
+
+
+/***/ }),
+
 /***/ "./src/app/workouts/workouts.component.html":
 /*!**************************************************!*\
   !*** ./src/app/workouts/workouts.component.html ***!
@@ -989,11 +1143,11 @@ module.exports = ".custom-tooltip .tooltip-inner {\n  background-color: #2b2727 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "WorkoutsComponent", function() { return WorkoutsComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
-/* harmony import */ var _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../services/workouts-api.service */ "./src/app/services/workouts-api.service.ts");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
-/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
-/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm5/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm5/router.js");
+/* harmony import */ var _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../services/workouts-api.service */ "./src/app/services/workouts-api.service.ts");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
+/* harmony import */ var lodash__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(lodash__WEBPACK_IMPORTED_MODULE_3__);
+/* harmony import */ var _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ng-bootstrap/ng-bootstrap */ "./node_modules/@ng-bootstrap/ng-bootstrap/fesm5/ng-bootstrap.js");
 /* harmony import */ var _performance_targets_modal_performance_targets_modal_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../performance-targets-modal/performance-targets-modal.component */ "./src/app/performance-targets-modal/performance-targets-modal.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -1011,7 +1165,8 @@ var __metadata = (undefined && undefined.__metadata) || function (k, v) {
 
 
 var WorkoutsComponent = /** @class */ (function () {
-    function WorkoutsComponent(workoutService, modal) {
+    function WorkoutsComponent(route, workoutService, modal) {
+        this.route = route;
         this.workoutService = workoutService;
         this.modal = modal;
         this.workouts = [];
@@ -1022,6 +1177,7 @@ var WorkoutsComponent = /** @class */ (function () {
         this.pageSize = 5;
         this.currPage = 1;
         this.errorMessage = '';
+        this.workoutss = [];
     }
     WorkoutsComponent.prototype.ngOnInit = function () {
         // this.loading = true;
@@ -1030,21 +1186,32 @@ var WorkoutsComponent = /** @class */ (function () {
         //   this.loading = false;
         // });
         // this.workoutService.getPerfTargets()
-        var _this = this;
-        this.loading = true;
-        Object(rxjs__WEBPACK_IMPORTED_MODULE_4__["forkJoin"])(this.workoutService.getWorkoutsTotal(), this.workoutService.getWorkouts(), 
-        // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
-        this.workoutService.getPerfTargets()).subscribe(function (_a) {
-            var workoutsTotal = _a[0], workoutsResult = _a[1], perfTargetsResult = _a[2];
-            _this.workoutsTotal = workoutsTotal.workoutsAmount;
-            // this.workoutsOrig = workoutsResult;
-            _this.workouts = workoutsResult;
-            // this.refreshGrid();
-            _this.perfTargets = perfTargetsResult;
-            _this.calculatePerformance();
-            _this.loading = false;
-            console.log('--workouts', _this.workouts, _this.perfTargets);
-        }, function (error) { return _this.errorMessage = error; });
+        // this.loading = true;
+        // USING RESOLVER
+        this.workoutss = this.route.snapshot.data['workouts'];
+        this.workoutsTotal = this.route.snapshot.data['workouts'][0];
+        this.workouts = this.route.snapshot.data['workouts'][1];
+        this.perfTargets = this.route.snapshot.data['workouts'][2];
+        // console.log(this.perfTargets);
+        this.calculatePerformance();
+        this.loading = false;
+        // forkJoin(
+        //   this.workoutService.getWorkoutsTotal(),
+        //   this.workoutService.getWorkouts(),
+        //   // this.workoutService.getWorkoutsPaged(this.currPage, this.pageSize), // TEMPO
+        //   this.workoutService.getPerfTargets(),
+        // ).subscribe(([workoutsTotal, workoutsResult, perfTargetsResult]) => {
+        //     this.workoutsTotal = workoutsTotal.workoutsAmount;
+        //     // this.workoutsOrig = workoutsResult;
+        //     this.workouts = workoutsResult;
+        //     // this.refreshGrid();
+        //     this.perfTargets = perfTargetsResult;
+        //     this.calculatePerformance();
+        //     this.loading = false;
+        //     console.log('--workouts', this.workouts, this.perfTargets);
+        // },
+        //   error => this.errorMessage = <any>error
+        // );
     };
     WorkoutsComponent.prototype.refreshGrid = function () {
         // client side filtering (pagination)
@@ -1062,7 +1229,7 @@ var WorkoutsComponent = /** @class */ (function () {
         var _this = this;
         var options = { size: 'sm' };
         this.modal.open(deleteModal, options).result.then(function (result) {
-            _this.workoutService.deleteWorkout(id).subscribe(function (data) { return lodash__WEBPACK_IMPORTED_MODULE_2__["remove"](_this.workouts, { id: id }); }, function (error) { return _this.errorMessage = error; });
+            _this.workoutService.deleteWorkout(id).subscribe(function (data) { return lodash__WEBPACK_IMPORTED_MODULE_3__["remove"](_this.workouts, { id: id }); }, function (error) { return _this.errorMessage = error; });
         }, function (reason) { return console.log("Dismissed: " + reason); });
     };
     WorkoutsComponent.prototype.showPerfTargets = function () {
@@ -1081,9 +1248,9 @@ var WorkoutsComponent = /** @class */ (function () {
         });
     };
     WorkoutsComponent.prototype.calculatePerformance = function () {
-        var bikeTotal = lodash__WEBPACK_IMPORTED_MODULE_2__["chain"](this.workouts).filter(function (x) { return x.type === 'bike'; }).sumBy(function (x) { return +x.distance; }).value();
-        var rowTotal = lodash__WEBPACK_IMPORTED_MODULE_2__["chain"](this.workouts).filter(function (x) { return x.type === 'row'; }).sumBy(function (x) { return +x.distance; }).value();
-        var runTotal = lodash__WEBPACK_IMPORTED_MODULE_2__["chain"](this.workouts).filter(function (x) { return x.type === 'run'; }).sumBy(function (x) { return +x.distance; }).value();
+        var bikeTotal = lodash__WEBPACK_IMPORTED_MODULE_3__["chain"](this.workouts).filter(function (x) { return x.type === 'bike'; }).sumBy(function (x) { return +x.distance; }).value();
+        var rowTotal = lodash__WEBPACK_IMPORTED_MODULE_3__["chain"](this.workouts).filter(function (x) { return x.type === 'row'; }).sumBy(function (x) { return +x.distance; }).value();
+        var runTotal = lodash__WEBPACK_IMPORTED_MODULE_3__["chain"](this.workouts).filter(function (x) { return x.type === 'run'; }).sumBy(function (x) { return +x.distance; }).value();
         this.totals = { bike: bikeTotal, row: rowTotal, run: runTotal };
         // console.log('**totals', this.totals);
     };
@@ -1109,7 +1276,7 @@ var WorkoutsComponent = /** @class */ (function () {
             styles: [__webpack_require__(/*! ./workouts.component.scss */ "./src/app/workouts/workouts.component.scss")],
             encapsulation: _angular_core__WEBPACK_IMPORTED_MODULE_0__["ViewEncapsulation"].None // to have css style on tooltip
         }),
-        __metadata("design:paramtypes", [_services_workouts_api_service__WEBPACK_IMPORTED_MODULE_1__["WorkoutsApiService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_3__["NgbModal"]])
+        __metadata("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_1__["ActivatedRoute"], _services_workouts_api_service__WEBPACK_IMPORTED_MODULE_2__["WorkoutsApiService"], _ng_bootstrap_ng_bootstrap__WEBPACK_IMPORTED_MODULE_4__["NgbModal"]])
     ], WorkoutsComponent);
     return WorkoutsComponent;
 }());

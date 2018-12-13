@@ -28,7 +28,7 @@ export class WorkoutsData implements InMemoryDbService {
       },
       {
         'id': 4,
-        'name': 'best Gym'
+        'name': 'Best Gym'
       },
       {
         'id': 5,
@@ -68,7 +68,7 @@ export class WorkoutsData implements InMemoryDbService {
         'date': '2018-11-14',
         'time': null,
         'distance': '50',
-        'location': 'best Gym',
+        'location': 'Best Gym',
         'id': 4
       },
       {

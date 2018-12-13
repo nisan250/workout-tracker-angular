@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
+// Imports for loading & configuring the in-memory web api
 import { InMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { WorkoutsData } from './services/workouts-data';
 
@@ -20,6 +21,8 @@ import { WorkoutsApiService } from './services/workouts-api.service';
 import { DateStringAdapterService } from './services/date-string-adapter.service';
 import { PerformanceTargetsModalComponent } from './performance-targets-modal/performance-targets-modal.component';
 import { AdminComponent } from './admin/admin.component';
+import { WorkoutResolverService } from './entry-editor/workout-resolver.service';
+import { WorkoutsResolverService } from './workouts/workouts-resolver.service';
 
 @NgModule({
   declarations: [
@@ -42,6 +45,8 @@ import { AdminComponent } from './admin/admin.component';
   ],
   providers: [
     WorkoutsApiService,
+    WorkoutResolverService,
+    WorkoutsResolverService,
     { provide: NgbDateAdapter, useClass: DateStringAdapterService }
   ],
   entryComponents: [

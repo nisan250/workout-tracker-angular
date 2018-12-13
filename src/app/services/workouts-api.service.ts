@@ -12,7 +12,7 @@ export class WorkoutsApiService {
 
   // with in-memory web api
   private baseUrl = '/api';
-
+  loading: false;
   constructor(private http: HttpClient) {}
 
   getWorkouts(): Observable<any[]> {
@@ -67,7 +67,7 @@ export class WorkoutsApiService {
 
   getPerfTargets(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/performanceTargets`).pipe(
-      tap(data => console.log(JSON.stringify(data))),
+      // tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
@@ -89,7 +89,7 @@ export class WorkoutsApiService {
 
   getWorkoutsTotal(): Observable<any> {
     return this.http.get<any>(`${this.baseUrl}/workoutsTotal`).pipe(
-      tap(data => console.log('sssss', JSON.stringify(data))),
+      // tap(data => console.log(JSON.stringify(data))),
       catchError(this.handleError)
     );
   }
@@ -98,6 +98,8 @@ export class WorkoutsApiService {
 
 
   private handleError(err: HttpErrorResponse) {
+    this.loading = false;
+
     let errorMessage = '';
     if (err.error instanceof ErrorEvent) {
       // client-side or network error
@@ -105,9 +107,10 @@ export class WorkoutsApiService {
     } else {
       // backend error with response code
       errorMessage = `backend error with response code or network error ---> error ${err.message}`;
-      alert(`To use this app in action you have to downlowd the data/db.json file
-              from the github repository to your local machine and run json-server(localhost:3000)`);
+      // alert(`To use this app in action you have to downlowd the data/db.json file
+      //         from the github repository to your local machine and run json-server(localhost:3000)`);
     }
+
     console.log(errorMessage);
     return throwError(errorMessage);
   }

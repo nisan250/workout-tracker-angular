@@ -8,10 +8,13 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 export class HomeComponent implements OnInit {
 public stepComplete = 0;
 @ViewChild('acc') acc: any;
+public loading = false;
+
 
   constructor() { }
 
   ngOnInit() {
+    this.loading = false;
   }
 
   nextButton(step) {
